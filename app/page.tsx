@@ -42,14 +42,14 @@ const heroSlides = [
     subheadlineClass: "text-secondary text-center",
   },
   {
-    image: "/baby1.png",
+    image: "/baby.png",
     headline: "هل يشخر طفلك ويطحن أسنانه؟",
     subheadline: " طفلك ليس هادئاً كما تعتقد!!",
     headlineClass: "text-secondary text-center",
     subheadlineClass: "text-secondary/90 text-center",
   },
   {
-    image: "/doctor1.JPG",
+    image: "/doctor.JPG",
     headline: "الدكتور مهنـد الكسواني",
     subheadline: `المحاضر الدولي في علوم علاج الشخير والتنفس الفموي،
 والتخصصات المتعلقة بطب الأسنان، والابتسامة الرقمية، وعلوم إطباق الأسنان.
@@ -58,7 +58,7 @@ const heroSlides = [
     subheadlineClass: "text-blue-400 text-center",
   },
   {
-    image: "/couples1.jpg",
+    image: "/couples.jpg",
     headline: "الشخير والتنفس الفموي يؤثران على صحتك",
     subheadline: "احصل على نوم هادئ وصحة أفضل مع أحدث تقنيات العلاج",
     headlineClass: "text-green-200 text-center",
