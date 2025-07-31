@@ -35,7 +35,7 @@ import Head from 'next/head';
 // Hero slides data
 const heroSlides = [
   {
-    image: "/confirense1.JPG",
+    image: "/confirense.JPG",
     headline: "الشخير واضطرابات التنفس أثناء النوم",
     subheadline: "بروتوكول علاجي متعدد التخصصات",
     headlineClass: "text-white text-center",
