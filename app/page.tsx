@@ -30,25 +30,26 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Head from 'next/head';
 
 // Hero slides data
 const heroSlides = [
   {
-    image: "/confirense.JPG",
+    image: "/confirense1.JPG",
     headline: "الشخير واضطرابات التنفس أثناء النوم",
     subheadline: "بروتوكول علاجي متعدد التخصصات",
     headlineClass: "text-white text-center",
     subheadlineClass: "text-secondary text-center",
   },
   {
-    image: "/baby.png",
+    image: "/baby1.png",
     headline: "هل يشخر طفلك ويطحن أسنانه؟",
     subheadline: " طفلك ليس هادئاً كما تعتقد!!",
     headlineClass: "text-secondary text-center",
     subheadlineClass: "text-secondary/90 text-center",
   },
   {
-    image: "/doctor.JPG",
+    image: "/doctor1.JPG",
     headline: "الدكتور مهنـد الكسواني",
     subheadline: `المحاضر الدولي في علوم علاج الشخير والتنفس الفموي،
 والتخصصات المتعلقة بطب الأسنان، والابتسامة الرقمية، وعلوم إطباق الأسنان.
@@ -57,7 +58,7 @@ const heroSlides = [
     subheadlineClass: "text-blue-400 text-center",
   },
   {
-    image: "/couples.jpg",
+    image: "/couples1.jpg",
     headline: "الشخير والتنفس الفموي يؤثران على صحتك",
     subheadline: "احصل على نوم هادئ وصحة أفضل مع أحدث تقنيات العلاج",
     headlineClass: "text-green-200 text-center",
@@ -100,6 +101,14 @@ export default function ArabicSnoringClinic() {
 
   return (
     <div className="min-h-screen bg-white" dir="rtl">
+       <Head>
+        <title>عيادة الشخير واضطرابات التنفس أثناء النوم - Dental Snore Clinic</title>
+        <meta name="description" content="نساعدك على علاج الشخير وتحسين جودة التنفس والنوم. اتصل بنا اليوم للحصول على استشارة." />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://dentalsnoreclinic.com" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+
       {/* Navigation */}
       <Navbar />
 
