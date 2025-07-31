@@ -55,7 +55,7 @@ export default function ArabicSnoringClinic() {  return (
               </div>
             </div>
 
-            <div className="relative">
+            <div className="relative  bg-red-800 ">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src="/placeholder.svg?height=500&width=600"

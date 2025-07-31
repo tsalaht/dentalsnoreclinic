@@ -28,9 +28,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import ggg from "../assets/1.jpg";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+
+// Hero slides data
 const heroSlides = [
   {
     image: "/confirense.JPG",
@@ -38,7 +39,6 @@ const heroSlides = [
     subheadline: "بروتوكول علاجي متعدد التخصصات",
     headlineClass: "text-white text-center",
     subheadlineClass: "text-secondary text-center",
-    // Add more custom style fields if needed
   },
   {
     image: "/baby.png",
@@ -54,7 +54,7 @@ const heroSlides = [
 والتخصصات المتعلقة بطب الأسنان، والابتسامة الرقمية، وعلوم إطباق الأسنان.
 `,
     headlineClass: "text-blue-200 text-center",
-    subheadlineClass: "text-blue-400 text-center  ",
+    subheadlineClass: "text-blue-400 text-center",
   },
   {
     image: "/couples.jpg",
@@ -65,17 +65,46 @@ const heroSlides = [
   },
 ];
 
+// Team members data
+const teamMembers = [
+  {
+    name: "د. مهند الكسواني",
+    role: `Airway Dentist\nSnoring and mouth breathing physician`,
+    image: "/73.jpg",
+    slug: "mohannad",
+  },
+  {
+    name: "د. عايدة",
+    role: `Airway Dentist\nSnoring and mouth breathing physician`,
+    image: "/aida.jpg",
+    slug: "aida",
+  },
+  {
+    name: "د. مجد",
+    role: `Airway Dentist\nSnoring and mouth breathing physician`,
+    image: "/majd.png",
+    slug: "majd",
+  },
+  {
+    name: "د. إيمان",
+    role: "أخصائية الأشعة السنية التشخيصية",
+    image: "/iman.JPG",
+    slug: "iman",
+  },
+];
+
 export default function ArabicSnoringClinic() {
   const router = useRouter();
   const [isExpanded, setIsExpanded] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
+
   return (
     <div className="min-h-screen bg-white" dir="rtl">
       {/* Navigation */}
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative min-h-[70vh] md:min-h-[92vh] bg-primary/5 flex items-center  justify-center">
+      {/* Hero Section - Optimized with priority loading for first image */}
+      <section className="relative min-h-[70vh] md:min-h-[92vh] bg-primary/5 flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Swiper
             modules={[Pagination, Autoplay]}
@@ -87,28 +116,25 @@ export default function ArabicSnoringClinic() {
           >
             {heroSlides.map((slide, idx) => (
               <SwiperSlide key={idx}>
-                <div
-                  className="w-full h-full min-h-[19vh] md:min-h-[92vh] flex items-center justify-center relative"
-                  style={{
-                    backgroundImage: `url(${slide.image})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                  }}
-                >
+                <div className="w-full h-full min-h-[19vh] md:min-h-[92vh] flex items-center justify-center relative">
+                  {/* Preload first image, lazy load others */}
+                  <Image
+                    src={slide.image}
+                    alt=""
+                    fill
+                    priority={idx === 0}
+                    loading={idx === 0 ? "eager" : "lazy"}
+                    quality={80}
+                    className="object-cover"
+                  />
                   <div className="absolute inset-0 bg-black/30 z-10" />
                   <div className="relative z-10 flex flex-col items-center px-6 md:py-16 py-6 bg-black/30 rounded-lg md:mt-0 mt-14">
-                    <h1
-                      className={`text-lg md:text-5xl font-bold leading-tight mb-6 drop-shadow-sm ${slide.headlineClass}`}
-                    >
+                    <h1 className={`text-lg md:text-5xl font-bold leading-tight mb-6 drop-shadow-sm ${slide.headlineClass}`}>
                       {slide.headline}
                     </h1>
-                    <p
-                      className={`text-base md:text-2xl  leading-relaxed max-w-2xl mx-auto font-bold ${slide.subheadlineClass}`}
-                    >
+                    <p className={`text-base md:text-2xl leading-relaxed max-w-2xl mx-auto font-bold ${slide.subheadlineClass}`}>
                       {slide.subheadline}
                     </p>
-                    {/* You can add per-slide buttons or other content here if needed */}
                   </div>
                 </div>
               </SwiperSlide>
@@ -116,7 +142,7 @@ export default function ArabicSnoringClinic() {
           </Swiper>
         </div>
 
-        <div className="flex  flex-row gap-4 justify-center items-center max-w-lg mx-auto z-10 md:mt-52 mt-64 ">
+        <div className="flex flex-row gap-4 justify-center items-center max-w-lg mx-auto z-10 md:mt-52 mt-64">
           <Link href="/children" className="w-full sm:w-auto">
             <Button
               size={"sm"}
@@ -136,7 +162,7 @@ export default function ArabicSnoringClinic() {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Features Section - Optimized images with sizes attribute */}
       <section className="py-20 bg-gradient-to-r from-blue-50 to-teal-50">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
@@ -153,17 +179,20 @@ export default function ArabicSnoringClinic() {
           </div>
           <div className="space-y-16">
             <div className="flex flex-col md:flex-row items-center gap-12">
-              <div className="w-full md:w-1/2 h-80 flex items-center justify-center rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500 relative">
+              <div className="w-full md:w-1/2 h-80 relative rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
                 <Image
-                  priority={true}
                   src="/DSC00023.JPG"
                   alt="Medical Devices"
-                  className="w-full h-full object-cover"
+                  fill
+                  priority
+                  quality={80}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
               </div>
               <div className="w-full md:w-1/2 text-center md:text-right">
-                <h3 className="md:text-3xl text-2xl  font-bold text-primary mb-3 relative">
+                <h3 className="md:text-3xl text-2xl font-bold text-primary mb-3 relative">
                   علاج الشخير بالليزر والجهاز الموجّه العضلي الوظيفي الفموي
                   <span className="block w-16 h-1 bg-secondary mx-auto md:mx-0 mt-2 rounded-full"></span>
                 </h3>
@@ -175,17 +204,19 @@ export default function ArabicSnoringClinic() {
               </div>
             </div>
             <div className="flex flex-col md:flex-row-reverse items-center gap-12">
-              <div className="w-full md:w-1/2 h-80 flex items-center justify-center rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500 relative">
+              <div className="w-full md:w-1/2 h-80 relative rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
                 <Image
-                  priority={true}
                   src="/70.jpg"
                   alt="Healthcare Center"
-                  className="w-full h-full object-cover"
+                  fill
+                  quality={80}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
               </div>
               <div className="w-full md:w-1/2 text-center md:text-right">
-                <h3 className="md:text-3xl text-2xl  font-bold text-primary mb-3 relative">
+                <h3 className="md:text-3xl text-2xl font-bold text-primary mb-3 relative">
                   رواد الشرق الأوسط
                   <span className="block w-16 h-1 bg-secondary mx-auto md:mx-0 mt-2 rounded-full"></span>
                 </h3>
@@ -196,24 +227,27 @@ export default function ArabicSnoringClinic() {
               </div>
             </div>
             <div className="flex flex-col md:flex-row items-center gap-12">
-              <div className="w-full md:w-1/2 h-96 flex items-center justify-center rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500 relative">
+              <div className="w-full md:w-1/2 h-96 relative rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
                 <Image
                   src="/1.jpg"
                   alt="Medical Devices"
-                  className="w-full h-full object-cover"
+                  fill
+                  quality={80}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
               </div>
               <div className="w-full md:w-1/2 text-center md:text-right">
                 <h3 className="md:text-3xl text-2xl font-bold text-primary mb-3 relative">
-                  ديفيد ماكنتوش مؤلف كتاب (الشخير حتى الموت )
+                  ديفيد ماكنتوش مؤلف كتاب (الشخير حتى الموت)
                   <span className="block w-16 h-1 bg-secondary mx-auto md:mx-0 mt-2 rounded-full"></span>
                 </h3>
                 <p className="text-gray-600 text-lg leading-relaxed">
                   بعد أسبوع من تبادل الخبرات مع الطبيب الاسترالي الشهير ديفيد
-                  ماكنتوش مؤلف كتاب (الشخير حتى الموت ) … في المركز الأوروبي لطب
+                  ماكنتوش مؤلف كتاب (الشخير حتى الموت) ... في المركز الأوروبي لطب
                   الأسنان والإشراف على دورة تدريب متقدمة في علاج الشخير
-                  واضطرابات التنفس … ويهدي كتابه إلى د.مهند الكسواني بداية تعاون
+                  واضطرابات التنفس ... ويهدي كتابه إلى د.مهند الكسواني بداية تعاون
                   مثمر مع أحد أعلام الطب في جراحة الأنف والأذن والحنجرة في
                   العالم
                 </p>
@@ -306,19 +340,21 @@ export default function ArabicSnoringClinic() {
         </div>
       </section>
 
-      {/* Doctor Introduction */}
+      {/* Doctor Introduction - Optimized image with priority */}
       <section className="py-12 bg-gradient-to-br from-blue-50 to-teal-50">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="relative">
-              <div className="rounded-3xl overflow-hidden shadow-2xl bg-blue-50 transform hover:scale-105 transition-transform duration-500">
-                <Image
-                  src="/79.jpg"
-                  alt="Medical Devices"
-                  className="w-full h-auto object-fill"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-              </div>
+            <div className="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl bg-blue-50 transform hover:scale-105 transition-transform duration-500">
+              <Image
+                src="/79.jpg"
+                alt="Dr. Mohannad Al-Kaswani"
+                fill
+                priority
+                quality={85}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
             <div className="space-y-6">
               <h3 className="text-2xl md:text-3xl font-extrabold text-primary relative">
@@ -391,6 +427,7 @@ export default function ArabicSnoringClinic() {
         </div>
       </section>
 
+      {/* Patient Experiences */}
       <section className="py-12 bg-gradient-to-br from-blue-50 to-teal-50">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
@@ -413,6 +450,7 @@ export default function ArabicSnoringClinic() {
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
+                  loading="lazy"
                 ></iframe>
               </div>
               <div className="p-6 text-center">
@@ -434,6 +472,7 @@ export default function ArabicSnoringClinic() {
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
+                  loading="lazy"
                 ></iframe>
               </div>
               <div className="p-6 text-center">
@@ -455,6 +494,7 @@ export default function ArabicSnoringClinic() {
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
+                  loading="lazy"
                 ></iframe>
               </div>
               <div className="p-6 text-center">
@@ -471,6 +511,8 @@ export default function ArabicSnoringClinic() {
           </div>
         </div>
       </section>
+
+      {/* Campaign Section - Optimized video loading */}
       <section className="py-12 bg-gradient-to-br from-blue-50 to-teal-50">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
@@ -492,6 +534,7 @@ export default function ArabicSnoringClinic() {
                   className="w-full h-full object-cover"
                   src="/correct.mp4"
                   poster="/logoTnafsSah.png"
+                  preload="metadata"
                 ></video>
               </div>
               <div className="p-6 text-center">
@@ -511,6 +554,7 @@ export default function ArabicSnoringClinic() {
                   className="w-full h-full object-cover"
                   src="/v3.mp4"
                   poster="/logoTnafsSah.png"
+                  preload="metadata"
                 ></video>
               </div>
               <div className="p-6 text-center">
@@ -526,13 +570,10 @@ export default function ArabicSnoringClinic() {
           </div>
         </div>
       </section>
+
       {/* About Us Section */}
-      <section
-        className="py-12 bg-gradient-to-br from-blue-50 to-teal-50"
-        dir="rtl"
-      >
+      <section className="py-12 bg-gradient-to-br from-blue-50 to-teal-50" dir="rtl">
         <div className="container mx-auto px-6 lg:px-12">
-          {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-extrabold text-primary mb-4 relative">
               من نحن
@@ -544,7 +585,6 @@ export default function ArabicSnoringClinic() {
             </p>
           </div>
 
-          {/* Mission and Vision */}
           <div className="mb-20">
             <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6 text-center relative">
               رسالتنا ورؤيتنا
@@ -584,7 +624,6 @@ export default function ArabicSnoringClinic() {
             </div>
           </div>
 
-          {/* Dental Sleep Medicine */}
           <div className="mb-20">
             <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6 text-center relative">
               طب الأسنان المتعلق بأمراض النوم
@@ -651,47 +690,25 @@ export default function ArabicSnoringClinic() {
             </div>
           </div>
 
-          {/* Team Showcase */}
+          {/* Team Showcase - Optimized team images */}
           <div>
             <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6 text-center relative">
               فريق العمل
               <span className="block w-16 h-1 bg-secondary mx-auto mt-2 rounded-full"></span>
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                {
-                  name: "د. مهند الكسواني",
-                  role: `Airway Dentist\nSnoring and mouth breathing physician`,
-                  image: "/73.jpg",
-                  slug: "mohannad",
-                },
-                {
-                  name: "د. عايدة",
-                  role: `Airway Dentist\nSnoring and mouth breathing physician`,
-                  image: "/aida.jpg",
-                  slug: "aida",
-                },
-                {
-                  name: "د. مجد",
-                  role: `Airway Dentist\nSnoring and mouth breathing physician`,
-                  image: "/majd.png",
-                  slug: "majd",
-                },
-                {
-                  name: "د. إيمان",
-                  role: "أخصائية الأشعة السنية التشخيصية",
-                  image: "/iman.JPG",
-                  slug: "iman",
-                },
-              ].map((doctor, idx) => (
+              {teamMembers.map((doctor, idx) => (
                 <Link key={idx} href={`/team/${doctor.slug}`}>
                   <Card className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer">
                     <CardContent className="p-6 text-center">
-                      <div className="w-48 h-auto mx-auto mb-4 rounded-xl overflow-hidden">
+                      <div className="w-48 h-48 mx-auto mb-4 rounded-xl overflow-hidden relative">
                         <Image
                           src={doctor.image}
                           alt={doctor.name}
-                          className="w-full h-full object-contain"
+                          fill
+                          quality={85}
+                          sizes="(max-width: 768px) 50vw, 25vw"
+                          className="object-cover"
                         />
                       </div>
                       <h4 className="text-lg font-bold text-primary mb-2">
@@ -715,6 +732,8 @@ export default function ArabicSnoringClinic() {
           </div>
         </div>
       </section>
+
+      {/* Treatment Protocol Section - Optimized video */}
       <section className="py-12 bg-gradient-to-br from-blue-50 to-teal-50">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
@@ -738,6 +757,7 @@ export default function ArabicSnoringClinic() {
                   className="w-full h-full object-cover"
                   src="/treatment-protocol.mp4"
                   poster="/2.jpg"
+                  preload="metadata"
                 ></video>
               </div>
               <CardContent className="p-6 text-center">
@@ -764,6 +784,8 @@ export default function ArabicSnoringClinic() {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
       <section className="py-12 bg-gradient-to-br from-blue-50 to-teal-50">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
@@ -868,6 +890,7 @@ export default function ArabicSnoringClinic() {
           </div>
         </div>
       </section>
+
       {/* Quick Contact CTA */}
       <section className="py-16 bg-primary/70 text-white">
         <div className="container mx-auto px-6">
@@ -1016,9 +1039,9 @@ export default function ArabicSnoringClinic() {
                     >
                       <path
                         fill="currentColor"
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M3 8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Zm5-3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H8Zm7.597 2.214a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2h-.01a1 1 0 0 1-1-1ZM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 3a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                       />
                     </svg>
                   </a>

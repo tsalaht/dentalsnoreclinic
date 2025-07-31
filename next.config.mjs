@@ -8,7 +8,7 @@ const nextConfig = {
   },
   images: {
     unoptimized: false, // use Next.js image optimizer
-    domains: ['localhost', 'yourdomain.com'],
+   domains: ['localhost', 'backend.dentalsnoreclinic.com'],
   },
 }
 
