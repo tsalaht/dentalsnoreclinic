@@ -163,7 +163,7 @@ export default function InteractiveSleepChallenge() {
             className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 text-lg"
           >
             <Target className="w-5 h-5 ml-2" />
-            ابدأ التحدي الآن
+فريقنا هنا لمساعدتك
           </Button>
         </CardContent>
       </Card>

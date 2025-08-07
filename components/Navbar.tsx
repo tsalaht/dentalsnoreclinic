@@ -54,7 +54,7 @@ export default function Navbar() {
   ]
 
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
+    <nav className="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
       <div className="container mx-auto px-3 relative">
         <div className="flex items-center justify-between " dir="rtl">
           {/* Logo */}

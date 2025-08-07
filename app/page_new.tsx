@@ -318,7 +318,7 @@ export default function ArabicSnoringClinic() {  return (
               <p className="text-gray-400 mb-4">المركز الأوروبي للطب الأسنان</p>
               <div className="space-y-2 text-sm text-gray-400">
                 <p>د. مهند الكسواني</p>
-                <p>أخصائي علاج الشخير واضطرابات النوم</p>
+                <p>خبير علاج الشخير والتنفس الفموي</p>
               </div>
             </div>
             <div>

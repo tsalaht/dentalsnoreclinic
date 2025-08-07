@@ -511,9 +511,11 @@ export default function FAQPage() {
                     rows={4}
                     className="w-full p-3 border border-white/30 rounded-lg bg-white/10 text-white placeholder-white/70 focus:ring-2 focus:ring-white focus:border-transparent"
                   ></textarea>
-                    <Button className="bg-blue-500 hover:bg-blue-700 text-white w-full py-3">
-    إرسال
-  </Button>
+                    <a href="https://wa.me/962797377131?text=لدي سؤال خاص حول الشخير وأريد إجابة من الدكتور" target="_blank" className="w-full">
+                      <Button className="bg-blue-500 hover:bg-blue-700 text-white w-full py-3">
+                        إرسال الى واتساب
+                      </Button>
+                    </a>
                   <div className="grid grid-cols-2 gap-4">
                     <a href="https://wa.me/962797377131?text=لدي سؤال خاص حول الشخير وأريد إجابة من الدكتور" target="_blank" className="w-full">
                       <Button className="bg-green-500 hover:bg-green-600 text-white w-full py-3">
@@ -568,11 +570,11 @@ export default function FAQPage() {
                 </div>
                 <h3 className="text-lg font-bold text-primary mb-3">اختبار التقييم</h3>
                 <p className="text-gray-600 text-sm mb-4">قيّم حالتك واكتشف مدى خطورة الشخير</p>
-                <a href="https://wa.me/962797377131?text=أريد إجراء اختبار تقييم الشخير" target="_blank">
+                <Link href="/adults#assessment">
                   <Button variant="outline" className="border-green-500 text-green-600 hover:bg-green-50 w-full">
                     ابدأ التقييم
                   </Button>
-                </a>
+                </Link>
               </CardContent>
             </Card>
 

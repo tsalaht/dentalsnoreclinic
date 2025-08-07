@@ -567,7 +567,9 @@ export default function AdultsPage() {
               </p>
             </div>
 
-            <AdultSnoringAssessment />
+            <div id="assessment">
+              <AdultSnoringAssessment />
+            </div>
 
             <div className="mt-12 bg-white rounded-2xl p-8 shadow-lg border border-yellow-200">
               <h3 className="text-xl font-bold text-primary mb-4">

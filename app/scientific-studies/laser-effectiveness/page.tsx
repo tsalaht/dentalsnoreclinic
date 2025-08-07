@@ -96,13 +96,13 @@ export default function LaserEffectivenessPage() {
                       <p className="italic text-gray-800">Non-ablative laser therapy for snoring and obstructive sleep apnea.</p>
                       <p className="text-gray-600"><i>Journal of Clinical Sleep Medicine</i>.</p>
                       <a
-                        href="https://pmc.ncbi.nlm.nih.gov/articles/CMC9879649/"
+                        href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9879649/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-blue-600 hover:underline break-all flex items-center gap-2"
                       >
                         <BookOpen className="w-4 h-4" />
-                        https://pmc.ncbi.nlm.nih.gov/articles/CMC9879649/
+                 https://pmc.ncbi.nlm.nih.gov/articles/PMC9879649/
                       </a>
                     </div>
                   </li>

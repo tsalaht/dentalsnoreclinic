@@ -21,7 +21,7 @@ import {
   PlayCircle,
   ThumbsUp,
 } from "lucide-react";
-import Navbar from "@/components/Navbar";
+import PageLayout from "@/components/PageLayout";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import SimpleRating from "@/components/SimpleRating";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -100,17 +100,14 @@ export default function ArabicSnoringClinic() {
   const [activeSlide, setActiveSlide] = useState(0);
 
   return (
-    <div className="min-h-screen bg-white" dir="rtl">
-       <Head>
+    <PageLayout>
+      <Head>
         <title>عيادة الشخير واضطرابات التنفس أثناء النوم - Dental Snore Clinic</title>
         <meta name="description" content="نساعدك على علاج الشخير وتحسين جودة التنفس والنوم. اتصل بنا اليوم للحصول على استشارة." />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://dentalsnoreclinic.com" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-
-      {/* Navigation */}
-      <Navbar />
 
       {/* Hero Section - Optimized with priority loading for first image */}
       <section className="relative min-h-[70vh] md:min-h-[92vh] bg-primary/5 flex items-center justify-center">
@@ -950,7 +947,7 @@ export default function ArabicSnoringClinic() {
               </p>
               <div className="space-y-2 text-sm text-gray-300">
                 <p>د. مهند الكسواني</p>
-                <p>أخصائي علاج الشخير واضطرابات النوم</p>
+                <p>خبير علاج الشخير والتنفس الفموي</p>
               </div>
             </div>
             <div>
@@ -1069,6 +1066,6 @@ export default function ArabicSnoringClinic() {
 
       {/* WhatsApp Button */}
       <WhatsAppButton />
-    </div>
+    </PageLayout>
   );
 }

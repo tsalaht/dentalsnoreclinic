@@ -61,6 +61,17 @@ export default function ContactPage() {
       return false
     }
 
+    // Date validation - prevent past dates
+    const selectedDate = new Date(formData.preferredDate)
+    const today = new Date()
+    today.setHours(0, 0, 0, 0) // Reset time to start of day for accurate comparison
+    
+    if (selectedDate < today) {
+      setSubmitMessage('لا يمكن حجز موعد في تاريخ ماضي')
+      setMessageType('error')
+      return false
+    }
+
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(formData.email)) {
@@ -276,7 +287,9 @@ export default function ContactPage() {
                           <h3 className="font-bold text-lg mb-2">فيسبوك</h3>
                           <p className="text-gray-600 mb-2">تابعنا على فيسبوك</p>
                           <a href="https://www.facebook.com/HealthyStartCenter" target="_blank" className="text-blue-600 font-medium hover:underline">
-                            Healthy Start Center
+                         عيادة المركز الأوروبي لعلاج الشخير واضطرابات التنفس أثناء النوم
+                         <br/>
+                       د. مهند الكسواني
                           </a>
                         </div>
                       </div>
@@ -314,7 +327,7 @@ export default function ContactPage() {
                           <h3 className="font-bold text-lg mb-2">يوتيوب</h3>
                           <p className="text-gray-600 mb-2">اشترك في قناتنا على يوتيوب</p>
                           <a href="https://www.youtube.com/@dentalsnoreclinic" target="_blank" className="text-red-600 font-medium hover:underline">
-                            EuroDentalCenterJO
+                      Dental Snore Clinic
                           </a>
                         </div>
                       </div>
@@ -439,7 +452,8 @@ export default function ContactPage() {
                         onChange={handleInputChange}
                         className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/70"
                         required
-                        min={new Date().toISOString().split('T')[0]} // Prevent past dates
+                        min={new Date().toISOString().split('T')[0]}
+                        max="2030-12-31"
                       />
                     </div>
                     
@@ -507,7 +521,7 @@ export default function ContactPage() {
               <p className="text-gray-300 mb-4">عيادة ضمن أقسام المركز الأوروبي لطب الأسنان</p>
               <div className="space-y-2 text-sm text-gray-400">
                 <p>د. مهند الكسواني</p>
-                <p>أخصائي علاج الشخير واضطرابات النوم</p>
+                <p>خبير علاج الشخير والتنفس الفموي</p>
               </div>
             </div>
             <div>

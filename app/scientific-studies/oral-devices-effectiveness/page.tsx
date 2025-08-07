@@ -72,7 +72,7 @@ export default function OralDevicesEffectivenessPage() {
                   <div>
                     <h4 className="font-semibold text-secondary text-base sm:text-lg">سهولة الاستخدام والراحة</h4>
                     <p className="text-gray-600 text-sm sm:text-base leading-relaxed break-words">
-                      تتميز الأجهزة الفموية بسهولة الاستخدام، حيث يمكن تصميمها خصيصًا لتناسب المريض، مما يجعلها مريحة وفعالة. تعتبر خيارًا مثاليًا للمرضى الذين يفضلون تجنب العلاجات الجراحية أو أجهزة الضغط الإيجابي (CPAP) <sup>[4,5]</sup>.
+                      تتميز الأجهزة الفموية بسهولة الاستخدام،  مما يجعلها مريحة وفعالة. تعتبر خيارًا مثاليًا للمرضى الذين يفضلون تجنب العلاجات الجراحية أو أجهزة الضغط الإيجابي (CPAP) <sup>[4,5]</sup>.
                     </p>
                   </div>
                 </div>

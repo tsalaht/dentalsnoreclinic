@@ -500,7 +500,7 @@ export default function MedicalLibraryPage() {
                 </div>
               </CardContent>
               <div className="px-6 pb-6">
-                <a href="https://www.youtube.com/watch?v=nmog1iNuFAQ" target="_blank">
+                <a href="https://www.youtube.com/@dentalsnoreclinic" target="_blank">
                   <Button className="w-full bg-primary/80 hover:bg-primary text-white btn-hover-scale">
                     <PlayCircle className="w-4 h-4 ml-2" />
                     مشاهدة الفيديو التعليمي
@@ -537,7 +537,7 @@ export default function MedicalLibraryPage() {
                 </div>
               </CardContent>
               <div className="px-6 pb-6">
-                <a href="https://www.youtube.com/watch?v=nmog1iNuFAQ" target="_blank">
+                <a href="https://www.youtube.com/@dentalsnoreclinic" target="_blank">
                   <Button className="w-full bg-accent/80 hover:bg-accent text-white btn-hover-scale">
                     <PlayCircle className="w-4 h-4 ml-2" />
                     مشاهدة الفيديو التعليمي
@@ -574,7 +574,7 @@ export default function MedicalLibraryPage() {
                 </div>
               </CardContent>
               <div className="px-6 pb-6">
-                <a href="https://www.youtube.com/watch?v=nmog1iNuFAQ" target="_blank">
+                <a href="https://www.youtube.com/@dentalsnoreclinic" target="_blank">
                   <Button className="w-full bg-secondary/80 hover:bg-secondary text-white btn-hover-scale">
                     <PlayCircle className="w-4 h-4 ml-2" />
                     مشاهدة الفيديو التعليمي
