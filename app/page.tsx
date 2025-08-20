@@ -30,7 +30,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Head from 'next/head';
+import Head from "next/head";
 
 // Hero slides data
 const heroSlides = [
@@ -102,8 +102,13 @@ export default function ArabicSnoringClinic() {
   return (
     <PageLayout>
       <Head>
-        <title>عيادة الشخير واضطرابات التنفس أثناء النوم - Dental Snore Clinic</title>
-        <meta name="description" content="نساعدك على علاج الشخير وتحسين جودة التنفس والنوم. اتصل بنا اليوم للحصول على استشارة." />
+        <title>
+          عيادة الشخير واضطرابات التنفس أثناء النوم - Dental Snore Clinic
+        </title>
+        <meta
+          name="description"
+          content="نساعدك على علاج الشخير وتحسين جودة التنفس والنوم. اتصل بنا اليوم للحصول على استشارة."
+        />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://dentalsnoreclinic.com" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -135,10 +140,14 @@ export default function ArabicSnoringClinic() {
                   />
                   <div className="absolute inset-0 bg-black/30 z-10" />
                   <div className="relative z-10 flex flex-col items-center px-6 md:py-16 py-6 bg-black/30 rounded-lg md:mt-0 mt-14">
-                    <h1 className={`text-lg md:text-5xl font-bold leading-tight mb-6 drop-shadow-sm ${slide.headlineClass}`}>
+                    <h1
+                      className={`text-lg md:text-5xl font-bold leading-tight mb-6 drop-shadow-sm ${slide.headlineClass}`}
+                    >
                       {slide.headline}
                     </h1>
-                    <p className={`text-base md:text-2xl leading-relaxed max-w-2xl mx-auto font-bold ${slide.subheadlineClass}`}>
+                    <p
+                      className={`text-base md:text-2xl leading-relaxed max-w-2xl mx-auto font-bold ${slide.subheadlineClass}`}
+                    >
                       {slide.subheadline}
                     </p>
                   </div>
@@ -251,10 +260,10 @@ export default function ArabicSnoringClinic() {
                 </h3>
                 <p className="text-gray-600 text-lg leading-relaxed">
                   بعد أسبوع من تبادل الخبرات مع الطبيب الاسترالي الشهير ديفيد
-                  ماكنتوش مؤلف كتاب (الشخير حتى الموت) ... في المركز الأوروبي لطب
-                  الأسنان والإشراف على دورة تدريب متقدمة في علاج الشخير
-                  واضطرابات التنفس ... ويهدي كتابه إلى د.مهند الكسواني بداية تعاون
-                  مثمر مع أحد أعلام الطب في جراحة الأنف والأذن والحنجرة في
+                  ماكنتوش مؤلف كتاب (الشخير حتى الموت) ... في المركز الأوروبي
+                  لطب الأسنان والإشراف على دورة تدريب متقدمة في علاج الشخير
+                  واضطرابات التنفس ... ويهدي كتابه إلى د.مهند الكسواني بداية
+                  تعاون مثمر مع أحد أعلام الطب في جراحة الأنف والأذن والحنجرة في
                   العالم
                 </p>
               </div>
@@ -578,7 +587,10 @@ export default function ArabicSnoringClinic() {
       </section>
 
       {/* About Us Section */}
-      <section className="py-12 bg-gradient-to-br from-blue-50 to-teal-50" dir="rtl">
+      <section
+        className="py-12 bg-gradient-to-br from-blue-50 to-teal-50"
+        dir="rtl"
+      >
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-extrabold text-primary mb-4 relative">
@@ -993,12 +1005,29 @@ export default function ArabicSnoringClinic() {
             <div>
               <h4 className="font-semibold mb-4">خدماتنا</h4>
               <ul className="space-y-2 text-sm text-gray-300">
-                <li>تشخيص أسباب الشخير</li>
-                <li>علاج انقطاع التنفس النومي</li>
-                <li>تقويم الفكين</li>
-                <li>العلاج الوقائي للأطفال</li>
+                <li>
+                  <Link href="/adults" className="hover:text-white">
+                    تشخيص أسباب الشخير
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/adults" className="hover:text-white">
+                    علاج انقطاع التنفس النومي
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/adults" className="hover:text-white">
+                    تقويم الفكين
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/adults" className="hover:text-white">
+                    العلاج الوقائي للأطفال
+                  </Link>
+                </li>
               </ul>
             </div>
+
             <div>
               <h4 className="font-semibold mb-4">تواصل معنا</h4>
               <div className="space-y-2 text-sm text-gray-300">

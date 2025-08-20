@@ -1,0 +1,13 @@
+// 1. public/robots.txt
+User-agent: *
+Allow: /
+Sitemap: https://dentalsnoreclinic.com/sitemap.xml
+
+# Disallow admin or sensitive areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /dashboard/
+
+
+
+
