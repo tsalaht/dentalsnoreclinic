@@ -149,7 +149,7 @@ export default function ContactPage() {
       <div className="min-h-screen bg-white" dir="rtl">
         <Navbar />
 
-        <section className="bg-gradient-to-l from-blue-50 to-blue-100 py-12">
+        <section className="bg-gradient-to-l from-blue-50 to-blue-100 py-12 mt-16">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl font-bold text-primary mb-6">
               اتصل بنا - عيادة الشخير وطب الأسنان

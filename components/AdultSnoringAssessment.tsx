@@ -16,7 +16,7 @@ interface Question {
 interface UserInfo {
   name: string
   email: string
-  phone: string
+  phone: string 
 }
 
 export default function AdultSnoringAssessment() {
@@ -25,6 +25,7 @@ export default function AdultSnoringAssessment() {
   const [showResults, setShowResults] = useState(false)
   const [showSaveForm, setShowSaveForm] = useState(false)
   const [userInfo, setUserInfo] = useState<UserInfo>({ name: '', email: '', phone: '' })
+  const[testtype ,setTesttype]=useState('')
   const [isSaving, setIsSaving] = useState(false)
   const [saveSuccess, setSaveSuccess] = useState(false)
 
@@ -127,7 +128,8 @@ export default function AdultSnoringAssessment() {
           note: `${results.title} - ${results.recommendations.join(', ')}`,
           email: userInfo.email,
           name: userInfo.name,
-          phone: userInfo.phone
+          phone: userInfo.phone,
+          testtype :testtype
         })
       })
       
