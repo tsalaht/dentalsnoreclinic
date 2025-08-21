@@ -28,7 +28,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import { useState } from "react";
+import { useState ,useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Head from "next/head";
 
@@ -98,12 +98,15 @@ export default function ArabicSnoringClinic() {
   const router = useRouter();
   const [isExpanded, setIsExpanded] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
+  useEffect(() => {
+    document.title = "الرئيسيه - عيادة الشخير واضطراب التنفس أثناء النوم";
+    
+  }, []);
 
   return (
     <PageLayout>
       <Head>
-        <title>
-          عيادة الشخير واضطرابات التنفس أثناء النوم - Dental Snore Clinic
+        <title>الرئيسيه -عيادة الشخير واضطراب التنفس أثناء النوم
         </title>
         <meta
           name="description"
@@ -115,7 +118,7 @@ export default function ArabicSnoringClinic() {
       </Head>
 
       {/* Hero Section - Optimized with priority loading for first image */}
-      <section className="relative min-h-[70vh] md:min-h-[92vh] bg-primary/5 flex items-center justify-center">
+      <section className="relative min-h-[70vh] md:min-h-[92vh] bg-primary/5 flex items-center justify-center ">
         <div className="absolute inset-0 z-0">
           <Swiper
             modules={[Pagination, Autoplay]}

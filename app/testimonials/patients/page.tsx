@@ -1,13 +1,12 @@
-"use client"
+"use client";
 
-import Navbar from "@/components/Navbar"
-import { Card, CardContent } from "@/components/ui/card"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Star, User, Calendar, MessageCircle } from "lucide-react"
-import Breadcrumb from "@/components/Breadcrumb"
-
+import Navbar from "@/components/Navbar";
+import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Star, User, Calendar, MessageCircle } from "lucide-react";
+import Breadcrumb from "@/components/Breadcrumb";
 
 const videoTestimonials = [
   {
@@ -23,19 +22,22 @@ const videoTestimonials = [
   {
     title: "تجربة الدكتور محمد نور العبسي",
     src: "https://www.youtube.com/embed/uN9LpOMKswA",
-    description: "تجربة الدكتور محمد نور العبسي في علاج الشخير داخل المركز الأوروبي",
+    description:
+      "تجربة الدكتور محمد نور العبسي في علاج الشخير داخل المركز الأوروبي",
   },
   {
     title: "",
     src: "https://www.youtube.com/embed/IREdfY7anSI",
-    description: "من تجارب مرضانا في عيادتنا لعلاج الشخير والتنفس الفموي أثناء النوم",
+    description:
+      "من تجارب مرضانا في عيادتنا لعلاج الشخير والتنفس الفموي أثناء النوم",
   },
   {
     title: "",
     src: "https://www.youtube.com/embed/sKNnEGkkJ0U",
-    description: "من تجارب مرضانا في عيادتنا لعلاج الشخير والتنفس الفموي أثناء النوم",
+    description:
+      "من تجارب مرضانا في عيادتنا لعلاج الشخير والتنفس الفموي أثناء النوم",
   },
-]
+];
 
 export default function PatientTestimonialsPage() {
   return (
@@ -44,7 +46,7 @@ export default function PatientTestimonialsPage() {
       <Navbar />
 
       {/* Testimonials Section */}
-      <section className="relative bg-gradient-to-l from-blue-50 to-teal-100 py-12 overflow-hidden">
+      <section className="relative bg-gradient-to-l from-blue-50 to-teal-100 py-12  mt-12 overflow-hidden">
         {/* Floating background elements */}
         <div className="absolute inset-0">
           <div className="absolute top-10 right-10 w-80 h-80 bg-gradient-to-br from-blue-200/30 to-teal-200/30 rounded-full blur-3xl animate-float morphing-shape"></div>
@@ -54,26 +56,27 @@ export default function PatientTestimonialsPage() {
 
         <div className="container mx-auto px-4 relative z-10">
           {/* Breadcrumb */}
-          <Breadcrumb 
-            items={[
-              { label: "شهادات المرضى" }
-            ]} 
-          />
+          <Breadcrumb items={[{ label: "شهادات المرضى" }]} />
 
           <div className="text-center mb-16">
-            <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100 animate-fade-in-up mb-4">تجارب المرضى</Badge>
+            <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100 animate-fade-in-up mb-4">
+              تجارب المرضى
+            </Badge>
             <h1 className="text-3xl lg:text-4xl font-bold text-primary mb-4 animate-fade-in-down">
               شهادات المرضى
               <span className="block w-28 h-1 bg-secondary mx-auto mt-3 rounded-full opacity-90"></span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed animate-fade-in-up" style={{animationDelay: '0.2s'}}>
-              "كن على قيد الأمل واستثمر في نومك نحو حياة أفضل"<br />
+            <p
+              className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed animate-fade-in-up"
+              style={{ animationDelay: "0.2s" }}
+            >
+              "كن على قيد الأمل واستثمر في نومك نحو حياة أفضل"
+              <br />
               من تجارب مرضانا في عيادتنا لعلاج الشخير والتنفس الفموي أثناء النوم
             </p>
           </div>
 
           {/* Text Testimonials */}
-
 
           {/* Video Testimonials */}
           <div className="text-center mb-12">
@@ -81,13 +84,19 @@ export default function PatientTestimonialsPage() {
               تجارب مرضانا بالفيديو
               <span className="block w-16 h-1 bg-secondary mx-auto mt-3 rounded-full opacity-90"></span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+            <p
+              className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed animate-fade-in-up"
+              style={{ animationDelay: "0.2s" }}
+            >
               استمع إلى قصص نجاح مرضانا الذين حققوا تحسناً ملحوظاً في جودة نومهم
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {videoTestimonials.map((video, idx) => (
-              <Card key={idx} className="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-500">
+              <Card
+                key={idx}
+                className="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-500"
+              >
                 <CardContent className="p-0">
                   <div className="relative h-48">
                     <iframe
@@ -108,7 +117,9 @@ export default function PatientTestimonialsPage() {
                       {video.title}
                       <span className="block w-16 h-1 bg-secondary mx-auto mt-2 rounded-full"></span>
                     </h3>
-                    <p className="text-gray-600 leading-relaxed">{video.description}</p>
+                    <p className="text-gray-600 leading-relaxed">
+                      {video.description}
+                    </p>
                   </div>
                 </CardContent>
               </Card>
@@ -123,18 +134,35 @@ export default function PatientTestimonialsPage() {
           <h2 className="text-3xl font-bold mb-6 text-white animate-fade-in-down">
             هل أنت مستعد لتغيير حياتك أيضاً؟
           </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+          <p
+            className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto animate-fade-in-up"
+            style={{ animationDelay: "0.2s" }}
+          >
             احجز استشارتك اليوم للحصول على خطة علاج مخصصة
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{animationDelay: '0.3s'}}>
+          <div
+            className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up"
+            style={{ animationDelay: "0.3s" }}
+          >
             <Link href="/contact" className="group">
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg w-full sm:w-auto transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+              <Button
+                size="lg"
+                className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg w-full sm:w-auto transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+              >
                 <Calendar className="w-5 h-5 ml-2" />
                 احجز عبر النموذج
               </Button>
             </Link>
-            <a href="https://wa.me/962797377131?text=أريد حجز موعد لعلاج الشخير" target="_blank" className="group">
-              <Button size="lg" variant="outline" className="border-white text-blue-600 hover:bg-white hover:text-blue-600 px-8 py-4 text-lg w-full sm:w-auto transition-all duration-300 hover:scale-105">
+            <a
+              href="https://wa.me/962797377131?text=أريد حجز موعد لعلاج الشخير"
+              target="_blank"
+              className="group"
+            >
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-white text-blue-600 hover:bg-white hover:text-blue-600 px-8 py-4 text-lg w-full sm:w-auto transition-all duration-300 hover:scale-105"
+              >
                 <MessageCircle className="w-5 h-5 ml-2" />
                 احجز عبر واتساب
               </Button>
@@ -143,5 +171,5 @@ export default function PatientTestimonialsPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }

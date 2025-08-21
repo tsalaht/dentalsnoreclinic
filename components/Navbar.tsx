@@ -63,7 +63,7 @@ export default function Navbar() {
               <div className="rounded-lg p-2 transition-all duration-300 hover:bg-blue-50">
                 <Image
                   src="/Artboard 2.svg"
-                  alt="Dental Snore Clinic - المركز الأوروبي"
+                  alt= ' عيادة الشخير واضطرابات التنفس أثناء النوم'
                   width={240}
                   height={80}
                   className="h-10 md:h-10 lg:h-16 w-auto max-w-[160px] md:max-w-[180px] lg:max-w-[200px] transition-all duration-300"

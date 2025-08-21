@@ -17,10 +17,11 @@ export default function BlogPage() {
 
   const fetchBlogs = async () => {
     try {
-      const res = await axios.get("https://backend.dentalsnoreclinic.com:3040/api/blogs");
-      console.log("🚀 ~ fetchBlogs ~ res:", res)
+      const res = await axios.get(
+        "https://backend.dentalsnoreclinic.com:3040/api/blogs"
+      );
+      console.log("🚀 ~ fetchBlogs ~ res:", res);
 
-      
       if (res.data.data) {
         setBloges(res.data.data);
       }
@@ -32,13 +33,17 @@ export default function BlogPage() {
     fetchBlogs();
   }, []);
 
+  useEffect(() => {
+  document.title = "المُدوّنة - عيادة الشخير واضطراب التنفس أثناء النوم";
+}, []);
+
   return (
     <div className="min-h-screen bg-white" dir="rtl">
       {/* Navigation */}
       <Navbar />
 
       {/* Blog Section */}
-      <section className="relative bg-gradient-to-l from-blue-50 to-teal-100 py-12 overflow-hidden">
+      <section className="relative bg-gradient-to-l from-blue-50 to-teal-100 py-12  mt-12  mt-12 overflow-hidden">
         {/* Floating background elements */}
         <div className="absolute inset-0">
           <div className="absolute top-10 right-10 w-80 h-80 bg-gradient-to-br from-blue-200/30 to-teal-200/30 rounded-full blur-3xl animate-float morphing-shape"></div>
@@ -72,7 +77,9 @@ export default function BlogPage() {
               bloges.map((post, idx) => (
                 <div
                   key={post.id}
-                 onClick={() => { router.push(`/blog/${post.id}`) }}
+                  onClick={() => {
+                    router.push(`/blog/${post.id}`);
+                  }}
                 >
                   <Card className="bg-white border-0 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 card-hover-lift">
                     <CardContent className="p-6 text-center relative">
