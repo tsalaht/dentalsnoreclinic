@@ -11,14 +11,13 @@ export default function PageLayout({ children }: PageLayoutProps) {
   useEffect(() => {
     document.title = "الرئيسيه - عيادة الشخير واضطراب التنفس أثناء النوم";
   }, []);
-
   return (
     <div className="min-h-screen bg-white" dir="rtl">
       {/* Navigation */}
       <Navbar />
 
       {/* Main Content with top padding for fixed navbar */}
-      <div className="pt-20">{children}</div>
+      <div className="pt-14 lg:pt-16">{children}</div>
     </div>
   );
 }

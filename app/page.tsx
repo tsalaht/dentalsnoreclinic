@@ -160,7 +160,7 @@ export default function ArabicSnoringClinic() {
           </Swiper>
         </div>
 
-        <div className="flex flex-row gap-4 justify-center items-center max-w-lg mx-auto z-10 md:mt-52 mt-64">
+        <div className="flex flex-row gap-4 justify-center items-center max-w-lg mx-auto z-10 md:mt-52 ">
           <Link href="/children" className="w-full sm:w-auto">
             <Button
               size={"sm"}
