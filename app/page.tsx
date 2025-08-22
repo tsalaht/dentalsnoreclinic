@@ -118,7 +118,7 @@ export default function ArabicSnoringClinic() {
       </Head>
 
       {/* Hero Section - Optimized with priority loading for first image */}
-      <section className="relative min-h-[70vh] md:min-h-[92vh] bg-primary/5 flex items-center justify-center ">
+       <section className="relative min-h-[70vh] md:min-h-[92vh] bg-primary/5 flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Swiper
             modules={[Pagination, Autoplay]}
@@ -160,7 +160,7 @@ export default function ArabicSnoringClinic() {
           </Swiper>
         </div>
 
-        <div className="flex flex-row gap-4 justify-center items-center max-w-lg mx-auto z-10 md:mt-52 ">
+        <div className="flex flex-row gap-4 justify-center items-center max-w-lg mx-auto z-10 md:mt-52 mt-64 ">
           <Link href="/children" className="w-full sm:w-auto">
             <Button
               size={"sm"}

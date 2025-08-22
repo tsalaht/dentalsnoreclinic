@@ -17,7 +17,8 @@ export default function PageLayout({ children }: PageLayoutProps) {
       <Navbar />
 
       {/* Main Content with top padding for fixed navbar */}
-      <div className="pt-14 lg:pt-16">{children}</div>
+       <div className="pt-12 lg:pt-20">
+        {children}</div>
     </div>
   );
 }
