@@ -1,13 +1,145 @@
 
+"use client";
 import Link from "next/link"
+import { useState ,useEffect } from "react";
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Phone, MapPin, Clock, MessageCircle, Calendar, Navigation } from "lucide-react"
 import Navbar from "@/components/Navbar"
 import WhatsAppButton from "@/components/WhatsAppButton"
+import axios from "axios";
+import Head from "next/head"
+import Script from "next/script"
 
 export default function ContactPage() {
+   const [formData, setFormData] = useState({
+    fullName: "",
+    phoneNumber: "",
+    email: "",
+    treatmentType: "",
+    preferredDate: "",
+    additionalNotes: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
+  const [messageType, setMessageType] = useState("");
+
+  const contactStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    mainEntity: {
+      "@type": "Dentist",
+      name: "Dental Snore Clinic",
+      telephone: "+962797377131",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "شارع باريس - مجمع الشانزليزيه",
+        addressLocality: "الصويفية",
+        addressRegion: "عمان",
+        addressCountry: "JO",
+      },
+    },
+  };
+
+  // ---------------- Handlers ----------------
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev:any) => ({ ...prev, [name]: value }));
+  };
+
+  const submitForm = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitMessage("");
+    setMessageType("");
+    setIsSubmitting(true);
+
+    try {
+      const apiData = {
+        name: formData.fullName,
+        phone_number: formData.phoneNumber,
+        email: formData.email,
+        type_medicine: formData.treatmentType,
+        date_of_medicine: formData.preferredDate,
+        notes: formData.additionalNotes || "لا توجد ملاحظات إضافية",
+      };
+
+      const response = await axios.post(
+        "https://backend.dentalsnoreclinic.com:3040/api/consultation",
+        apiData,
+        { headers: { "Content-Type": "application/json" }, timeout: 10000 }
+      );
+
+      if (response.data?.message) {
+        setSubmitMessage(
+          "تم إرسال طلب الموعد بنجاح! سنتواصل معك خلال 24 ساعة."
+        );
+        setMessageType("success");
+        setFormData({
+          fullName: "",
+          phoneNumber: "",
+          email: "",
+          treatmentType: "",
+          preferredDate: "",
+          additionalNotes: "",
+        });
+      } else {
+        throw new Error("Invalid response");
+      }
+    } catch {
+      setSubmitMessage(
+        "حدث خطأ أثناء الإرسال. حاول مرة أخرى أو اتصل بنا مباشرة."
+      );
+      setMessageType("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
+     <>
+      <Head>
+        <title>اتصل بنا - عيادة الشخير وطب الأسنان | عمان، الأردن</title>
+        <meta
+          name="description"
+          content="تواصل مع عيادة الشخير وطب الأسنان في الصويفية، عمان. هاتف: 962797377131. مواعيد العمل من السبت إلى الأربعاء."
+        />
+        <meta name="robots" content="index, follow" />
+        <meta
+          property="og:title"
+          content="اتصل بنا - عيادة الشخير وطب الأسنان | عمان، الأردن"
+        />
+        <meta
+          property="og:description"
+          content="تواصل مع عيادة الشخير وطب الأسنان في الصويفية، عمان. هاتف: 962797377131. مواعيد العمل من السبت إلى الأربعاء."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="ar_JO" />
+        <meta
+          property="og:url"
+          content="https://dentalsnoreclinic.com/contact"
+        />
+        <meta property="og:site_name" content="Dental Snore Clinic" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="اتصل بنا - عيادة الشخير وطب الأسنان | عمان، الأردن"
+        />
+        <meta
+          name="twitter:description"
+          content="تواصل مع عيادة الشخير وطب الأسنان في الصويفية، عمان."
+        />
+      </Head>
+      <Script
+        id="contact-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(contactStructuredData),
+        }}
+      />
     <div className="min-h-screen bg-white" dir="rtl">
       {/* Navigation */}
       <Navbar />
@@ -218,6 +350,8 @@ export default function ContactPage() {
                         className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/70"
                         placeholder="اكتب اسمك الكامل"
                         required
+                                  value={formData.fullName}
+                      onChange={handleInputChange}
                       />
                     </div>
                     <div>
@@ -226,8 +360,10 @@ export default function ContactPage() {
                         id="phoneNumber"
                         type="tel"
                         className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/70"
-                        placeholder="07xxxxxxxx"
+                    placeholder="07xxxxxxxx or +962xxxxxxxx"
                         required
+                           value={formData.phoneNumber}
+                      onChange={handleInputChange}
                       />
                     </div>
                     <div>
@@ -239,6 +375,8 @@ export default function ContactPage() {
                         className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/70"
                         placeholder="your.email@example.com"
                         required
+                               value={formData.email}
+                      onChange={handleInputChange}
                       />
                     </div>
                     <div>
@@ -258,6 +396,10 @@ export default function ContactPage() {
                         id="preferred-date"
                         name="preferred-date"
                         className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/70"
+                           value={formData.preferredDate}
+                      onChange={handleInputChange}
+                          min={new Date().toISOString().split("T")[0]}
+                      max="2030-12-31"
                       />
                     </div>
                     <div>
@@ -268,6 +410,8 @@ export default function ContactPage() {
                         name="additional-notes"
                         className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/70"
                         placeholder="اكتب أي ملاحظات أو أسئلة إضافية..."
+                              value={formData.additionalNotes}
+                      onChange={handleInputChange}
                       ></textarea>
                     </div>
                     <Button size="lg" className="w-full bg-blue-600 hover:bg-primary text-white">
@@ -396,5 +540,6 @@ export default function ContactPage() {
       {/* WhatsApp Button */}
       <WhatsAppButton />
     </div>
+   </>
   )
 }
