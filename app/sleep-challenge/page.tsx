@@ -300,7 +300,7 @@ export default function SleepChallengePage() {
             🚀 انضم لتحدي النوم وغيّر حياتك
           </h2>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            انضم إلى أكثر من 5000 مشارك وبدأ رحلة تحسين نومك مع تحدي النوم لمدة
+            انضم إلى أكثر من 5000 مشارك وابدأ رحلة تحسين نومك مع تحدي النوم لمدة
             14 يوم
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center"></div>
