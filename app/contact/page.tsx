@@ -273,7 +273,7 @@ export default function ContactPage() {
                       <div className="flex items-start gap-4">
                         <div className="w-12 h-12 bg-pink-50 rounded-lg flex items-center justify-center flex-shrink-0">
  <svg className="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <path fill="red" fill-rule="evenodd" d="M3 8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Zm5-3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H8Zm7.597 2.214a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2h-.01a1 1 0 0 1-1-1ZM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 3a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z" clip-rule="evenodd"/>
+                      <path fill="red" fillRule="evenodd" d="M3 8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Zm5-3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H8Zm7.597 2.214a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2h-.01a1 1 0 0 1-1-1ZM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 3a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z" clipRule="evenodd"/>
                     </svg>
 
                         </div>
@@ -341,29 +341,31 @@ export default function ContactPage() {
                 <CardContent className="p-8">
                   <h2 className="text-2xl font-bold text-primary mb-6">احجز موعدك عبر النموذج الإلكتروني</h2>
                   <p className="text-gray-600 mb-6">املأ النموذج أدناه وسنتواصل معك خلال 24 ساعة لتأكيد موعدك</p>
-                  <form className="space-y-6">
+                  <form onSubmit={submitForm} className="space-y-6">
                     <div>
                       <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-2">الاسم الكامل</label>
                       <input
                         id="fullName"
+                        name="fullName"
                         type="text"
                         className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/70"
                         placeholder="اكتب اسمك الكامل"
                         required
-                                  value={formData.fullName}
-                      onChange={handleInputChange}
+                        value={formData.fullName}
+                        onChange={handleInputChange}
                       />
                     </div>
                     <div>
                       <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700 mb-2">رقم الهاتف</label>
                       <input
                         id="phoneNumber"
+                        name="phoneNumber"
                         type="tel"
                         className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/70"
-                    placeholder="07xxxxxxxx or +962xxxxxxxx"
+                        placeholder="07xxxxxxxx or +962xxxxxxxx"
                         required
-                           value={formData.phoneNumber}
-                      onChange={handleInputChange}
+                        value={formData.phoneNumber}
+                        onChange={handleInputChange}
                       />
                     </div>
                     <div>
@@ -381,7 +383,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <label htmlFor="treatment-type" className="block text-sm font-medium text-gray-700 mb-2">نوع العلاج المطلوب</label>
-                      <select id="treatment-type" name="treatment-type" className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/70">
+                      <select id="treatment-type" name="treatmentType" className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/70">
                         <option value="">اختر نوع العلاج</option>
                         <option value="adult">علاج الشخير للبالغين</option>
                         <option value="child">علاج الشخير للأطفال</option>
@@ -394,12 +396,12 @@ export default function ContactPage() {
                       <input
                         type="date"
                         id="preferred-date"
-                        name="preferred-date"
+                        name="preferredDate"
                         className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/70"
-                           value={formData.preferredDate}
-                      onChange={handleInputChange}
-                          min={new Date().toISOString().split("T")[0]}
-                      max="2030-12-31"
+                        value={formData.preferredDate}
+                        onChange={handleInputChange}
+                        min={new Date().toISOString().split("T")[0]}
+                        max="2030-12-31"
                       />
                     </div>
                     <div>
@@ -407,17 +409,22 @@ export default function ContactPage() {
                       <textarea
                         rows={4}
                         id="additional-notes"
-                        name="additional-notes"
+                        name="additionalNotes"
                         className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/70"
                         placeholder="اكتب أي ملاحظات أو أسئلة إضافية..."
-                              value={formData.additionalNotes}
-                      onChange={handleInputChange}
+                        value={formData.additionalNotes}
+                        onChange={handleInputChange}
                       ></textarea>
                     </div>
-                    <Button size="lg" className="w-full bg-blue-600 hover:bg-primary text-white">
+                    <Button type="submit" size="lg" className="w-full bg-blue-600 hover:bg-primary text-white" disabled={isSubmitting}>
                       <Calendar className="w-5 h-5 ml-2" />
-                      إرسال طلب الموعد
+                      {isSubmitting ? "جاري الإرسال..." : "إرسال طلب الموعد"}
                     </Button>
+                  {submitMessage && (
+                    <div className={`mt-4 p-4 rounded-lg ${messageType === "success" ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"}`}>
+                      {submitMessage}
+                    </div>
+                  )}
                   </form>
                 </CardContent>
               </Card>
