@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react'
-import Image from 'next/image'
+import Image from '@/components/Image'
 import FloatingElements from './FloatingElements'
 import { cn } from '@/lib/utils'
 

@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Breadcrumb from "@/components/Breadcrumb";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "@/components/Image";
 
 export default function MedicalLibraryConferencePage() {
   return (

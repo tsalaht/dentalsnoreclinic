@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import Image from "@/components/Image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -457,7 +457,7 @@ export default function ArabicSnoringClinic() {
               <p className="text-gray-400 mb-4">المركز الأوروبي للطب الأسنان</p>
               <div className="space-y-2 text-sm text-gray-400">
                 <p>د. مهند الكسواني</p>
-                <p>خبير علاج الشخير والتنفس الفموي</p>
+                <p>ﺧﺒﻴﺮ ﻋﻼج اﻟﺸﺨﻴﺮ واﻟﺘﻨﻔﺲ اﻟﻔﻤﻮي</p>
               </div>
             </div>
             <div>

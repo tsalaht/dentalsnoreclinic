@@ -962,7 +962,7 @@ export default function ArabicSnoringClinic() {
               </p>
               <div className="space-y-2 text-sm text-gray-300">
                 <p>د. مهند الكسواني</p>
-                <p>خبير علاج الشخير والتنفس الفموي</p>
+                <p>ﺧﺒﻴﺮ ﻋﻼج اﻟﺸﺨﻴﺮ واﻟﺘﻨﻔﺲ اﻟﻔﻤﻮي</p>
               </div>
             </div>
             <div>

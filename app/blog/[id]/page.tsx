@@ -6,7 +6,7 @@ import Head from "next/head"
 import axios from "axios"
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
-import Image from 'next/image'
+import Image from '@/components/Image'
 
 interface Blog {
   id: string

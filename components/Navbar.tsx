@@ -1,7 +1,7 @@
 "use client"
 
 import Link from 'next/link'
-import Image from 'next/image'
+import Image from '@/components/Image'
 import { usePathname } from 'next/navigation'
 import MobileMenu from './MobileMenu'
 import { useState, useRef, useEffect } from 'react'

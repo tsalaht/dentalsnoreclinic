@@ -261,7 +261,8 @@ export default function ContactPage() {
                           <h3 className="font-bold text-lg mb-2">فيسبوك</h3>
                           <p className="text-gray-600 mb-2">تابعنا على فيسبوك</p>
                           <a href="https://www.facebook.com/HealthyStartCenter" target="_blank" className="text-blue-600 font-medium hover:underline">
-                            Healthy Start Center
+                          ﻋﻴﺎدة اﻟﻤﺮﻛﺰ اﻷوروﺑﻲ ﻟﻌﻼج اﻟﺸﺨﻴﺮ و اﻟﺘﻨﻔﺲ اﻟﻔﻤﻮي
+ اﻟﺪﻛﺘﻮر ﻣﻬﻨﺪ اﻟﻜﺴﻮاﻧﻲ
                           </a>
                         </div>
                       </div>
@@ -300,7 +301,7 @@ export default function ContactPage() {
         <h3 className="font-bold text-lg mb-2">يوتيوب</h3>
         <p className="text-gray-600 mb-2">اشترك في قناتنا على يوتيوب</p>
         <a href="https://www.youtube.com/@dentalsnoreclinic" target="_blank" className="text-red-600 font-medium hover:underline">
-          EuroDentalCenterJO
+   Dental Snore Clinic
         </a>
       </div>
     </div>

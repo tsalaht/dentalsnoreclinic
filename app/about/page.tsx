@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import Image from "@/components/Image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -31,7 +31,7 @@ import Head from "next/head";
 
 export default function AboutPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const openModal = (imageSrc) => {
     setSelectedImage(imageSrc);
@@ -251,83 +251,26 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-7 gap-8 w-full mx-auto">
-            <div className="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center hover:scale-105 transition-transform duration-300 border border-blue-100">
-              <Image
-                src="/sartafica1.jpeg"
-                alt="شهادة 1"
-                className="rounded-lg mb-3 w-full h-40 object-cover cursor-pointer"
-                onClick={() => openModal("/sartafica1.jpeg")}
-              />
-              <span className="text-primary font-semibold text-sm">
-                شهادة اعتماد دولية
-              </span>
-            </div>
-            <div className="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center hover:scale-105 transition-transform duration-300 border border-blue-100">
-              <Image
-                src="/sartafica2.jpeg"
-                alt="شهادة 2"
-                className="rounded-lg mb-3 w-full h-40 object-cover cursor-pointer"
-                onClick={() => openModal("/sartafica2.jpeg")}
-              />
-              <span className="text-primary font-semibold text-sm">
-                شهادة تدريب في علاج الشخير
-              </span>
-            </div>
-            <div className="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center hover:scale-105 transition-transform duration-300 border border-blue-100">
-              <Image
-                src="/sartafica3.jpeg"
-                alt="شهادة 3"
-                className="rounded-lg mb-3 w-full h-40 object-cover cursor-pointer"
-                onClick={() => openModal("/sartafica3.jpeg")}
-              />
-              <span className="text-primary font-semibold text-sm">
-                شهادة مشاركة في مؤتمرات دولية
-              </span>
-            </div>
-            <div className="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center hover:scale-105 transition-transform duration-300 border border-blue-100">
-              <Image
-                src="/sartafica6.png"
-                alt="شهادة 4"
-                className="rounded-lg mb-3 w-full h-40 object-cover cursor-pointer"
-                onClick={() => openModal("/sartafica6.png")}
-              />
-              <span className="text-primary font-semibold text-sm">
-                شهادة بروتوكولات علاج اضطرابات الفك والتنفس
-              </span>
-            </div>
-            <div className="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center hover:scale-105 transition-transform duration-300 border border-blue-100">
-              <Image
-                src="/sartafica4.png"
-                alt="شهادة 4"
-                className="rounded-lg mb-3 w-full h-40 object-cover cursor-pointer"
-                onClick={() => openModal("/sartafica4.png")}
-              />
-              <span className="text-primary font-semibold text-sm">
-                شهادة علاج أجهزة الفم للنوم
-              </span>
-            </div>
-            <div className="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center hover:scale-105 transition-transform duration-300 border border-blue-100">
-              <Image
-                src="/sartafica5.png"
-                alt="شهادة 5"
-                className="rounded-lg mb-3 w-full h-40 object-cover cursor-pointer"
-                onClick={() => openModal("/sartafica5.png")}
-              />
-              <span className="text-primary font-semibold text-sm">
-                شهادة تفسير اختبار النوم البوليسوموغرافي
-              </span>
-            </div>
-            <div className="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center hover:scale-105 transition-transform duration-300 border border-blue-100">
-              <Image
-                src="/sartafica4.jpeg"
-                alt="شهادة 4"
-                className="rounded-lg mb-3 w-full h-40 object-cover cursor-pointer"
-                onClick={() => openModal("/sartafica4.jpeg")}
-              />
-              <span className="text-primary font-semibold text-sm">
-                شهادة خبرة في اضطرابات النوم
-              </span>
-            </div>
+            {[
+              { src: "/sartafica1.jpeg", label: "شهادة اعتماد دولية" },
+              { src: "/sartafica2.jpeg", label: "شهادة تدريب في علاج الشخير" },
+              { src: "/sartafica3.jpeg", label: "شهادة مشاركة في مؤتمرات دولية" },
+              { src: "/sartafica6.png",  label: "شهادة بروتوكولات علاج اضطرابات الفك والتنفس" },
+              { src: "/sartafica4.png",  label: "شهادة علاج أجهزة الفم للنوم" },
+              { src: "/sartafica5.png",  label: "شهادة تفسير اختبار النوم البوليسوموغرافي" },
+              { src: "/sartafica4.jpeg", label: "شهادة خبرة في اضطرابات النوم" },
+            ].map((cert, i) => (
+              <div
+                key={i}
+                className="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center hover:scale-105 transition-transform duration-300 border border-blue-100 cursor-pointer"
+                onClick={() => openModal(cert.src)}
+              >
+                <div className="relative w-full h-48 mb-3 rounded-lg overflow-hidden">
+                  <Image src={cert.src} alt={cert.label} className="object-cover" />
+                </div>
+                <span className="text-primary font-semibold text-sm text-center">{cert.label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -337,20 +280,18 @@ export default function AboutPage() {
           onClick={closeModal}
         >
           <div
-            className="relative bg-white rounded-lg p-4 max-w-4xl w-full mx-4"
+            className="relative bg-white rounded-lg p-4 max-w-5xl w-full mx-4"
             onClick={(e) => e.stopPropagation()}
           >
             <button
-              className="absolute top-2 right-2 text-gray-600 hover:text-gray-800 text-2xl font-bold"
+              className="absolute top-2 right-2 z-10 text-gray-600 hover:text-gray-800 text-2xl font-bold"
               onClick={closeModal}
             >
               &times;
             </button>
-            <Image
-              src={selectedImage}
-              alt="Certificate Full View"
-              className="w-full h-auto rounded-lg"
-            />
+            <div className="relative w-full h-[80vh] rounded-lg overflow-hidden">
+              <Image src={selectedImage!} alt="Certificate Full View" className="object-contain" />
+            </div>
           </div>
         </div>
       )}
@@ -432,14 +373,14 @@ export default function AboutPage() {
                   slug: "iman",
                 },
               ].map((doctor, idx) => (
-                <Link key={idx} href={`/team/${doctor.slug}`}>
-                  <Card className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer">
-                    <CardContent className="p-6 text-center">
-                      <div className="w-48 h-auto mx-auto mb-4 rounded-xl overflow-hidden">
+                <Link key={idx} href={`/team/${doctor.slug}`} className="flex">
+                  <Card className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer flex flex-col w-full">
+                    <CardContent className="p-6 text-center flex flex-col flex-1">
+                      <div className="w-48 h-64 mx-auto mb-4 rounded-xl overflow-hidden relative">
                         <Image
                           src={doctor.image}
                           alt={doctor.name}
-                          className="w-full h-full object-contain"
+                          className="object-cover"
                         />
                       </div>
                       <h4 className="text-lg font-bold text-primary mb-2">
