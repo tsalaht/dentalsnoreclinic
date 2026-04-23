@@ -98,6 +98,12 @@ export default function ArabicSnoringClinic() {
   const router = useRouter();
   const [isExpanded, setIsExpanded] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
+  const scrollToBookSection = () => {
+    const section = document.getElementById("book-section");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
   useEffect(() => {
     document.title = "الرئيسيه - عيادة الشخير واضطراب التنفس أثناء النوم";
     
@@ -175,6 +181,26 @@ export default function ArabicSnoringClinic() {
             </Link>
           </div>
 
+      </section>
+
+      <section className="py-6 bg-white" dir="rtl">
+        <div className="container mx-auto px-6 lg:px-12">
+          <button
+            type="button"
+            onClick={scrollToBookSection}
+            className="mx-auto block w-full max-w-3xl rounded-2xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-[1.01] focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
+            aria-label="الانتقال إلى قسم الكتاب"
+          >
+            <div className="relative w-full h-[560px] md:h-[600px]">
+              <Image src="/bookCover.jpeg" alt="غلاف الكتاب" className="object-cover w-full h-full" />
+              <div className="absolute inset-0 bg-black/25 flex items-center justify-center">
+                <span className="bg-secondary/90 text-white font-bold px-5 py-2 rounded-full">
+                  اضغط هنا لعرض قسم الكتاب
+                </span>
+              </div>
+            </div>
+          </button>
+        </div>
       </section>
 
 
@@ -588,7 +614,11 @@ export default function ArabicSnoringClinic() {
       </section>
 
       {/* Book Coming Soon Section */}
-      <section className="py-20 bg-gradient-to-bl from-blue-900 via-blue-800 to-indigo-900 relative overflow-hidden" dir="rtl">
+      <section
+        id="book-section"
+        className="py-20 bg-gradient-to-bl from-blue-900 via-blue-800 to-indigo-900 relative overflow-hidden"
+        dir="rtl"
+      >
         {/* Decorative background circles */}
         <div className="absolute top-0 left-0 w-96 h-96 bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-72 h-72 bg-white/5 rounded-full translate-x-1/3 translate-y-1/3 pointer-events-none" />
@@ -799,10 +829,10 @@ export default function ArabicSnoringClinic() {
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {teamMembers.map((doctor, idx) => (
-                <Link key={idx} href={`/team/${doctor.slug}`}>
-                  <Card className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer">
-                    <CardContent className="p-6 text-center">
-                      <div className="w-48 h-48 mx-auto mb-4 rounded-xl overflow-hidden relative">
+                <Link key={idx} href={`/team/${doctor.slug}`} className="block h-full">
+                  <Card className="h-full bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer">
+                    <CardContent className="h-full p-6 text-center flex flex-col">
+                      <div className="w-48 h-60 mx-auto mb-4 rounded-xl overflow-hidden relative">
                         <Image
                           src={doctor.image}
                           alt={doctor.name}
@@ -815,7 +845,7 @@ export default function ArabicSnoringClinic() {
                       <h4 className="text-lg font-bold text-primary mb-2">
                         {doctor.name}
                       </h4>
-                      <div className="text-gray-600 leading-relaxed text-base">
+                      <div className="text-gray-600 leading-relaxed text-base mt-auto">
                         {doctor.role.split("\n").map((line, index) => (
                           <p
                             key={index}
