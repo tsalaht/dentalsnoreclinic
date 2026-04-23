@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image from "@/components/Image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -118,7 +118,7 @@ export default function ArabicSnoringClinic() {
       </Head>
 
       {/* Hero Section - Optimized with priority loading for first image */}
-       <section className="relative min-h-[70vh] md:min-h-[92vh] bg-primary/5 flex items-center justify-center">
+<section className="relative min-h-[70vh] md:min-h-[92vh] bg-primary/5 flex items-center  justify-center">
         <div className="absolute inset-0 z-0">
           <Swiper
             modules={[Pagination, Autoplay]}
@@ -130,29 +130,24 @@ export default function ArabicSnoringClinic() {
           >
             {heroSlides.map((slide, idx) => (
               <SwiperSlide key={idx}>
-                <div className="w-full h-full min-h-[19vh] md:min-h-[92vh] flex items-center justify-center relative">
-                  {/* Preload first image, lazy load others */}
-                  <Image
-                    src={slide.image}
-                    alt=""
-                    fill
-                    priority={idx === 0}
-                    loading={idx === 0 ? "eager" : "lazy"}
-                    quality={80}
-                    className="object-cover"
-                  />
+                <div
+                  className="w-full h-full min-h-[19vh] md:min-h-[92vh] flex items-center justify-center relative"
+                  style={{
+                    backgroundImage: `url(${slide.image})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                  }}
+                >
                   <div className="absolute inset-0 bg-black/30 z-10" />
                   <div className="relative z-10 flex flex-col items-center px-6 md:py-16 py-6 bg-black/30 rounded-lg md:mt-0 mt-14">
-                    <h1
-                      className={`text-lg md:text-5xl font-bold leading-tight mb-6 drop-shadow-sm ${slide.headlineClass}`}
-                    >
+                    <h1 className={`text-lg md:text-5xl font-bold leading-tight mb-6 drop-shadow-sm ${slide.headlineClass}`}>
                       {slide.headline}
                     </h1>
-                    <p
-                      className={`text-base md:text-2xl leading-relaxed max-w-2xl mx-auto font-bold ${slide.subheadlineClass}`}
-                    >
+                    <p className={`text-base md:text-2xl  leading-relaxed max-w-2xl mx-auto font-bold ${slide.subheadlineClass}`}>
                       {slide.subheadline}
                     </p>
+                    {/* You can add per-slide buttons or other content here if needed */}
                   </div>
                 </div>
               </SwiperSlide>
@@ -160,25 +155,28 @@ export default function ArabicSnoringClinic() {
           </Swiper>
         </div>
 
-        <div className="flex flex-row gap-4 justify-center items-center max-w-lg mx-auto z-10 md:mt-52 mt-64 ">
-          <Link href="/children" className="w-full sm:w-auto">
-            <Button
-              size={"sm"}
-              className="bg-accent hover:bg-accent/90 text-white px-3 md:py-2 py-0 text-xs font-semibold w-full rounded-2xl shadow-md transition-all duration-300 sm:px-8 sm:py-3 sm:text-lg"
-            >
-              طفلي يعاني من الشخير
-            </Button>
-          </Link>
-          <Link href="/adults" className="w-full sm:w-auto">
-            <Button
-              size="sm"
-              className="bg-secondary hover:bg-secondary/90 text-white px-3 md:py-2 py-0 text-xs font-semibold w-full rounded-2xl shadow-md transition-all duration-300 sm:px-8 sm:py-3 sm:text-lg"
-            >
-              أنا بالغ وأريد العلاج
-            </Button>
-          </Link>
-        </div>
+      
+          <div className="flex  flex-row gap-4 justify-center items-center max-w-lg mx-auto z-10 md:mt-52 mt-64 ">
+            <Link href="/children" className="w-full sm:w-auto">
+              <Button 
+        size={'sm'}
+                className="bg-accent hover:bg-accent/90 text-white px-3 md:py-2 py-0 text-xs font-semibold w-full rounded-2xl shadow-md transition-all duration-300 sm:px-8 sm:py-3 sm:text-lg"
+              >
+                طفلي يعاني من الشخير
+              </Button>
+            </Link>
+            <Link href="/adults" className="w-full sm:w-auto">
+              <Button 
+                size="sm" 
+                className="bg-secondary hover:bg-secondary/90 text-white px-3 md:py-2 py-0 text-xs font-semibold w-full rounded-2xl shadow-md transition-all duration-300 sm:px-8 sm:py-3 sm:text-lg"
+              >
+                أنا بالغ وأريد العلاج
+              </Button>
+            </Link>
+          </div>
+
       </section>
+
 
       {/* Features Section - Optimized images with sizes attribute */}
       <section className="py-20 bg-gradient-to-r from-blue-50 to-teal-50">
@@ -584,6 +582,88 @@ export default function ArabicSnoringClinic() {
                   تعلم الفوائد الصحية للتنفس الأنفي .
                 </p>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Book Coming Soon Section */}
+      <section className="py-20 bg-gradient-to-bl from-blue-900 via-blue-800 to-indigo-900 relative overflow-hidden" dir="rtl">
+        {/* Decorative background circles */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-72 h-72 bg-white/5 rounded-full translate-x-1/3 translate-y-1/3 pointer-events-none" />
+
+        <div className="container mx-auto px-6 lg:px-12 relative z-10">
+          {/* Badge */}
+          <div className="flex justify-center mb-8">
+            <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white text-sm font-semibold px-5 py-2 rounded-full backdrop-blur-sm">
+              <span className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
+              قريبًا — إصدار جديد
+            </span>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-14 items-center max-w-6xl mx-auto">
+            {/* Images */}
+            <div className="flex gap-6 justify-center items-end">
+              {/* Back book (aboutbook) — slightly behind */}
+              <div className="relative w-44 h-64 rounded-xl overflow-hidden shadow-2xl rotate-[-6deg] translate-y-4 flex-shrink-0 border-2 border-white/10">
+                <Image src="/aboutbook.jpeg" alt="نبذة عن الكتاب" className="object-cover" />
+              </div>
+              {/* Front cover */}
+              <div className="relative w-52 h-72 rounded-xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)] rotate-[3deg] flex-shrink-0 border-2 border-white/20 z-10">
+                <Image src="/bookCover.jpeg" alt="غلاف الكتاب" className="object-cover" />
+                {/* Shine effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/15 via-transparent to-transparent pointer-events-none" />
+              </div>
+            </div>
+
+            {/* Text content */}
+            <div className="text-white space-y-6">
+              <h2 className="text-3xl md:text-4xl font-extrabold leading-snug text-white">
+                كتاب جديد في طريقه إليكم
+                <span className="block w-20 h-1 bg-secondary mt-3 rounded-full" />
+              </h2>
+
+              <div className="space-y-4 text-blue-100 text-lg leading-relaxed">
+                <p>
+                  إلى كل مريض يعاني من الشخير وانقطاع التنفس الانسدادي أثناء النوم،
+                </p>
+                <p>
+                  إلى كل من يخوض صراعًا صامتًا مع أنفاسه في عتمة الليل…
+                </p>
+                <p className="font-semibold text-white">هذا العمل كُتب من أجلكم.</p>
+
+                <div className="border-r-2 border-secondary pr-4 space-y-2 text-blue-200">
+                  <p>ليكون خطوة نحو فهمٍ أعمق،</p>
+                  <p>وأملٍ أقرب،</p>
+                  <p>وحياةٍ أكثر طمأنينة.</p>
+                </div>
+
+                <p>
+                  لأن هذه الحالة ليست قدرًا محتومًا،
+                  بل نتيجة عوامل يمكن فهمها، والوقاية منها، وعلاجها.
+                </p>
+                <p>
+                  ولأن دور طبيب الأسنان لا يتوقف عند حدود الفم،
+                  بل يمتد ليكون جزءًا أساسيًا في حماية صحة الإنسان ككل…
+                </p>
+
+                <div className="border-r-2 border-secondary/60 pr-4 space-y-1 text-blue-200 italic">
+                  <p>يبقى التعاون بين مختلف التخصصات الطبية</p>
+                  <p>هو الطريق نحو تشخيص أدق،</p>
+                  <p>وعلاج أكثر فاعلية… قائم على العلم ومدعوم بالأمل.</p>
+                </div>
+              </div>
+
+              <a
+                href="https://wa.me/962797377131?text=أريد الاطلاع على الكتاب الجديد"
+                target="_blank"
+              >
+                <Button className="mt-2 bg-secondary hover:bg-secondary/90 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-all duration-300">
+                  <MessageCircle className="w-5 h-5 ml-2" />
+                الاستفسار حول الكتاب
+                </Button>
+              </a>
             </div>
           </div>
         </div>
