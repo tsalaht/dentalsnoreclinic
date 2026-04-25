@@ -1,49 +1,18 @@
-"use client";
-
 import Link from "next/link";
 import Image from "@/components/Image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { BookOpen, Play } from "lucide-react";
+import { BookOpen } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Breadcrumb from "@/components/Breadcrumb";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { blogPosts } from "@/lib/blogData";
 
 export default function BlogPage() {
-  const [bloges, setBloges] = useState<any[]>([]);
-  const router = useRouter();
-
-  const fetchBlogs = async () => {
-    try {
-      const res = await axios.get(
-        "https://backend.dentalsnoreclinic.com:3040/api/blogs"
-      );
-      console.log("🚀 ~ fetchBlogs ~ res:", res);
-
-      if (res.data.data) {
-        setBloges(res.data.data);
-      }
-      console.log("🚀 ~ fetchBlogs ~ res:", res);
-    } catch (error) {}
-  };
-
-  useEffect(() => {
-    fetchBlogs();
-  }, []);
-
-  useEffect(() => {
-  document.title = "المُدوّنة - عيادة الشخير واضطراب التنفس أثناء النوم";
-}, []);
-
   return (
     <div className="min-h-screen bg-white" dir="rtl">
-      {/* Navigation */}
       <Navbar />
 
-      {/* Blog Section */}
-      <section className="relative bg-gradient-to-l from-blue-50 to-teal-100 py-12  mt-12 overflow-hidden">
+      <section className="relative bg-gradient-to-l from-blue-50 to-teal-100 py-12 mt-12 overflow-hidden">
         {/* Floating background elements */}
         <div className="absolute inset-0">
           <div className="absolute top-10 right-10 w-80 h-80 bg-gradient-to-br from-blue-200/30 to-teal-200/30 rounded-full blur-3xl animate-float morphing-shape"></div>
@@ -52,7 +21,6 @@ export default function BlogPage() {
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          {/* Breadcrumb */}
           <Breadcrumb items={[{ label: "المدونة" }]} />
 
           <div className="text-center mb-16">
@@ -73,51 +41,35 @@ export default function BlogPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-            {bloges &&
-              bloges.map((post, idx) => (
-                <div
-                  key={post.id}
-                  onClick={() => {
-                    router.push(`/blog/${post.id}`);
-                  }}
-                >
-                  <Card className="bg-white border-0 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 card-hover-lift">
-                    <CardContent className="p-6 text-center relative">
-                      <div className="w-full h-60 rounded-xl overflow-hidden mb-4 relative">
-                        {post.image?.endsWith(".mp4") ? (
-                          <video
-                            src={post.image}
-                            className="w-full h-full object-cover"
-                            autoPlay
-                            loop
-                            muted
-                          />
-                        ) : (
-                          <Image
-                            src={post.thumbnail}
-                            alt={post.title}
-                            width={400}
-                            height={500}
-                            className="w-full h-full object-cover"
-                            loading="lazy"
-                          />
-                        )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-                        <Badge className="absolute top-3 right-3 bg-primary/70 text-white flex items-center gap-1 animate-fade-in-up">
-                          <BookOpen className="w-3 h-3" />
-                          مقالة
-                        </Badge>
-                      </div>
-                      <h3 className="text-lg font-bold text-primary mb-2 line-clamp-2">
-                        {post.title}
-                      </h3>
-                      <p className="text-gray-600 leading-relaxed text-base line-clamp-3">
-                        {post.description}
-                      </p>
-                    </CardContent>
-                  </Card>
-                </div>
-              ))}
+            {blogPosts.map((post) => (
+              <Link key={post.id} href={`/blog/${post.id}`}>
+                <Card className="bg-white border-0 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 card-hover-lift cursor-pointer">
+                  <CardContent className="p-6 text-center relative">
+                    <div className="w-full h-60 rounded-xl overflow-hidden mb-4 relative">
+                      <Image
+                        src={post.image}
+                        alt={post.title}
+                        width={400}
+                        height={500}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                      <Badge className="absolute top-3 right-3 bg-primary/70 text-white flex items-center gap-1 animate-fade-in-up">
+                        <BookOpen className="w-3 h-3" />
+                        مقالة
+                      </Badge>
+                    </div>
+                    <h3 className="text-lg font-bold text-primary mb-2 line-clamp-2 text-right">
+                      {post.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed text-base line-clamp-3 text-right">
+                      {post.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

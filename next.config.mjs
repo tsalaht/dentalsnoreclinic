@@ -10,6 +10,7 @@ const nextConfig = {
     remotePatterns: [
       { protocol: 'https', hostname: 'backend.dentalsnoreclinic.com' },
       { protocol: 'http', hostname: 'localhost' },
+      { protocol: 'https', hostname: 'images.unsplash.com' },
     ],
   },
   async headers() {

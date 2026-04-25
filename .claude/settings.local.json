@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pdftotext \"أفضل الطرق لحل مشكلة الشخير.pdf\" -)"
+    ]
+  }
+}

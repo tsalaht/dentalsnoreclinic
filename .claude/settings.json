@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pdftotext \"d:/workspace/krybton projects/dentalsnoreclinic-web/app/blog/blog content/الأكل، الحساسية وانقطاع التنفس أثناء النوم.pdf\" -)"
+    ]
+  }
+}
