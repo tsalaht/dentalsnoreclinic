@@ -361,12 +361,6 @@ export default function AboutPage() {
                   slug: "aida",
                 },
                 {
-                  name: "د. مجد",
-                  role: `Airway Dentist\nSnoring and mouth breathing physician`,
-                  image: "/majd.png",
-                  slug: "majd",
-                },
-                {
                   name: "د. إيمان",
                   role: "أخصائية الأشعة السنية التشخيصية",
                   image: "/iman.JPG",
