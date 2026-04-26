@@ -50,7 +50,7 @@ export default function MedicalLibraryMaterialsPage() {
       <Navbar />
 
       {/* Blog Section */}
-      <section className="relative bg-gradient-to-l from-blue-50 to-teal-100 py-12  mt-12 overflow-hidden">
+      <section className="relative bg-gradient-to-l from-blue-50 to-teal-100 py-12 mt-16 overflow-hidden">
         {/* Floating background elements */}
         <div className="absolute inset-0">
           <div className="absolute top-10 right-10 w-80 h-80 bg-gradient-to-br from-blue-200/30 to-teal-200/30 rounded-full blur-3xl animate-float morphing-shape"></div>

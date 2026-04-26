@@ -25,7 +25,7 @@ export default function TestimonialsPage() {
   return (
     <div className="min-h-screen bg-white" dir="rtl">
       <Navbar />
-      <section className="relative bg-gradient-to-l from-yellow-50 to-blue-100 py-12 overflow-hidden">
+      <section className="relative bg-gradient-to-l from-yellow-50 to-blue-100 py-12 mt-16 overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
             <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-100 animate-fade-in-up mb-4">شهادات</Badge>

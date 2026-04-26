@@ -72,7 +72,7 @@ export default function AboutPage() {
       </Head>
 
       <Navbar />
-      <section className="relative bg-gradient-to-l from-blue-50 to-indigo-100 py-12  mt-12 ">
+      <section className="relative bg-gradient-to-l from-blue-50 to-indigo-100 py-12 mt-16">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">

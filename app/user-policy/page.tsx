@@ -4,7 +4,7 @@ export default function UserPolicyPage() {
   return (
     <div className="min-h-screen bg-white" dir="rtl">
       <Navbar />
-      <main className="container mx-auto px-4 py-12  mt-12">
+      <main className="container mx-auto px-4 py-12 mt-16">
         <h1 className="text-3xl font-bold mb-6 text-primary">
           سياسة المستخدم – عيادة الشخير واضطرابات التنفس أثناء النوم (استشارات
           أونلاين)

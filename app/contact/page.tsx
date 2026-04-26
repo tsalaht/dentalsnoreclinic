@@ -4,10 +4,9 @@ import Link from "next/link"
 import { useState ,useEffect } from "react";
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Phone, MapPin, Clock, MessageCircle, Calendar, Navigation } from "lucide-react"
+import { Phone, MapPin, Clock, MessageCircle, Navigation } from "lucide-react"
 import Navbar from "@/components/Navbar"
 import WhatsAppButton from "@/components/WhatsAppButton"
-import axios from "axios";
 import Head from "next/head"
 import Script from "next/script"
 
@@ -20,9 +19,6 @@ export default function ContactPage() {
     preferredDate: "",
     additionalNotes: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState("");
-  const [messageType, setMessageType] = useState("");
 
   const contactStructuredData = {
     "@context": "https://schema.org",
@@ -51,52 +47,29 @@ export default function ContactPage() {
     setFormData((prev:any) => ({ ...prev, [name]: value }));
   };
 
-  const submitForm = async (e: React.FormEvent) => {
+  const submitForm = (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitMessage("");
-    setMessageType("");
-    setIsSubmitting(true);
 
-    try {
-      const apiData = {
-        name: formData.fullName,
-        phone_number: formData.phoneNumber,
-        email: formData.email,
-        type_medicine: formData.treatmentType,
-        date_of_medicine: formData.preferredDate,
-        notes: formData.additionalNotes || "لا توجد ملاحظات إضافية",
-      };
+    const treatmentLabels: Record<string, string> = {
+      adult: "علاج الشخير للبالغين",
+      child: "علاج الشخير للأطفال",
+      consultation: "استشارة عامة",
+      "follow-up": "مراجعة",
+    };
 
-      const response = await axios.post(
-        "https://backend.dentalsnoreclinic.com:3040/api/consultation",
-        apiData,
-        { headers: { "Content-Type": "application/json" }, timeout: 10000 }
-      );
+    const message = [
+      "🦷 *طلب موعد - Dental Snore Clinic*",
+      "",
+      `👤 *الاسم:* ${formData.fullName}`,
+      `📞 *الهاتف:* ${formData.phoneNumber}`,
+      `📧 *البريد الإلكتروني:* ${formData.email}`,
+      `💊 *نوع العلاج:* ${treatmentLabels[formData.treatmentType] || formData.treatmentType || "غير محدد"}`,
+      `📅 *التاريخ المفضل:* ${formData.preferredDate || "غير محدد"}`,
+      `📝 *ملاحظات:* ${formData.additionalNotes || "لا توجد ملاحظات"}`,
+    ].join("\n");
 
-      if (response.data?.message) {
-        setSubmitMessage(
-          "تم إرسال طلب الموعد بنجاح! سنتواصل معك خلال 24 ساعة."
-        );
-        setMessageType("success");
-        setFormData({
-          fullName: "",
-          phoneNumber: "",
-          email: "",
-          treatmentType: "",
-          preferredDate: "",
-          additionalNotes: "",
-        });
-      } else {
-        throw new Error("Invalid response");
-      }
-    } catch {
-      setSubmitMessage(
-        "حدث خطأ أثناء الإرسال. حاول مرة أخرى أو اتصل بنا مباشرة."
-      );
-      setMessageType("error");
-    } finally {
-      setIsSubmitting(false);
-    }
+    const url = `https://wa.me/962797377131?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
   };
 
   return (
@@ -145,7 +118,7 @@ export default function ContactPage() {
       <Navbar />
 
       {/* Contact Hero Section */}
-      <section className="bg-gradient-to-l from-blue-50 to-blue-100 py-12">
+      <section className="bg-gradient-to-l from-blue-50 to-blue-100 py-12 mt-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl font-bold text-primary mb-6">
@@ -417,15 +390,10 @@ export default function ContactPage() {
                         onChange={handleInputChange}
                       ></textarea>
                     </div>
-                    <Button type="submit" size="lg" className="w-full bg-blue-600 hover:bg-primary text-white" disabled={isSubmitting}>
-                      <Calendar className="w-5 h-5 ml-2" />
-                      {isSubmitting ? "جاري الإرسال..." : "إرسال طلب الموعد"}
+                    <Button type="submit" size="lg" className="w-full bg-primary hover:bg-[#1ebe5d] text-white">
+                      <MessageCircle className="w-5 h-5 ml-2" />
+                      إرسال عبر واتساب
                     </Button>
-                  {submitMessage && (
-                    <div className={`mt-4 p-4 rounded-lg ${messageType === "success" ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"}`}>
-                      {submitMessage}
-                    </div>
-                  )}
                   </form>
                 </CardContent>
               </Card>
@@ -487,7 +455,7 @@ export default function ContactPage() {
 </p>
               <div className="space-y-2 text-sm text-gray-400">
                 <p>د. مهند الكسواني</p>
-                <p>أخصائي علاج الشخير واضطرابات النوم</p>
+                <p>ﺧﺒﻴﺮ ﻋﻼج اﻟﺸﺨﻴﺮ واﻟﺘﻨﻔﺲ اﻟﻔﻤﻮي</p>
               </div>
             </div>
             <div>

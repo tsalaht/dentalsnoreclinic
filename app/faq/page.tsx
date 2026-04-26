@@ -14,7 +14,7 @@ export default function FAQPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-l from-blue-50 to-indigo-100 py-12">
+      <section className="relative bg-gradient-to-l from-blue-50 to-indigo-100 py-12 mt-16">
         <div className="container mx-auto px-4">          <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div className="space-y-6">
               <div className="space-y-4">
@@ -501,35 +501,13 @@ export default function FAQPage() {
               <CardContent className="p-8">
                 <h3 className="text-xl font-bold mb-6 text-center text-white">🤔 اطرح سؤالك الآن</h3>
                 <div className="space-y-4">
-                  <input
-                    type="text"
-                    placeholder="اسمك الكريم"
-                    className="w-full p-3 border border-white/30 rounded-lg bg-white/10 text-white placeholder-white/70 focus:ring-2 focus:ring-white focus:border-transparent"
-                  />
-                  <textarea
-                    placeholder="اكتب سؤالك هنا بالتفصيل..."
-                    rows={4}
-                    className="w-full p-3 border border-white/30 rounded-lg bg-white/10 text-white placeholder-white/70 focus:ring-2 focus:ring-white focus:border-transparent"
-                  ></textarea>
+                
                     <a href="https://wa.me/962797377131?text=لدي سؤال خاص حول الشخير وأريد إجابة من الدكتور" target="_blank" className="w-full">
                       <Button className="bg-blue-500 hover:bg-blue-700 text-white w-full py-3">
                         إرسال الى واتساب
                       </Button>
                     </a>
-                  <div className="grid grid-cols-2 gap-4">
-                    <a href="https://wa.me/962797377131?text=لدي سؤال خاص حول الشخير وأريد إجابة من الدكتور" target="_blank" className="w-full">
-                      <Button className="bg-green-500 hover:bg-green-600 text-white w-full py-3">
-                        <MessageCircle className="w-4 h-4 ml-2" />
-                        أرسل عبر واتساب
-                      </Button>
-                    </a>
-                    <a href="tel:+962797377131" className="w-full">
-                      <Button className="bg-white/20 hover:bg-white/30 text-white border border-white/30 w-full py-3">
-                        <Phone className="w-4 h-4 ml-2" />
-                        اتصل مباشرة
-                      </Button>
-                    </a>
-                  </div>
+             
                 </div>
               </CardContent>
             </Card>

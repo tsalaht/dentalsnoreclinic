@@ -10,7 +10,7 @@ export default function MedicalLibraryVideosPage() {
   return (
     <div className="min-h-screen bg-white" dir="rtl">
       <Navbar />
-      <section className="relative bg-gradient-to-l from-purple-50 to-indigo-100 py-12">
+      <section className="relative bg-gradient-to-l from-purple-50 to-indigo-100 py-12 mt-16">
         <div className="container mx-auto px-4">
           <Breadcrumb items={[
             { label: "المكتبة الطبية", href: "/medical-library" },

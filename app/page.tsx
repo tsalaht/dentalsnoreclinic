@@ -81,12 +81,6 @@ const teamMembers = [
     slug: "aida",
   },
   {
-    name: "د. مجد",
-    role: `Airway Dentist\nSnoring and mouth breathing physician`,
-    image: "/majd.png",
-    slug: "majd",
-  },
-  {
     name: "د. إيمان",
     role: "أخصائية الأشعة السنية التشخيصية",
     image: "/iman.JPG",
@@ -191,8 +185,8 @@ export default function ArabicSnoringClinic() {
             className="mx-auto block w-full max-w-3xl rounded-2xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-[1.01] focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
             aria-label="الانتقال إلى قسم الكتاب"
           >
-            <div className="relative w-full h-[560px] md:h-[600px]">
-              <Image src="/bookCover.jpeg" alt="غلاف الكتاب" className="object-cover w-full h-full" />
+            <div className="relative w-full">
+              <Image src="/bookCover.jpeg" alt="غلاف الكتاب" width={800} height={1100} className="w-full h-auto" />
               <div className="absolute inset-0 bg-black/25 flex items-center justify-center">
                 <span className="bg-secondary/90 text-white font-bold px-5 py-2 rounded-full">
                   اضغط هنا لعرض قسم الكتاب
@@ -619,63 +613,81 @@ export default function ArabicSnoringClinic() {
         className="py-20 bg-gradient-to-bl from-blue-900 via-blue-800 to-indigo-900 relative overflow-hidden"
         dir="rtl"
       >
-        {/* Decorative background circles */}
+        {/* Decorative blobs */}
         <div className="absolute top-0 left-0 w-96 h-96 bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-72 h-72 bg-white/5 rounded-full translate-x-1/3 translate-y-1/3 pointer-events-none" />
 
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           {/* Badge */}
-          <div className="flex justify-center mb-8">
+          <div className="flex justify-center mb-10">
             <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white text-sm font-semibold px-5 py-2 rounded-full backdrop-blur-sm">
               <span className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
               قريبًا — إصدار جديد
             </span>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-14 items-center max-w-6xl mx-auto">
-            {/* Images */}
-            <div className="flex gap-6 justify-center items-end">
-              {/* Back book (aboutbook) — slightly behind */}
-              <div className="relative w-44 h-64 rounded-xl overflow-hidden shadow-2xl rotate-[-6deg] translate-y-4 flex-shrink-0 border-2 border-white/10">
-                <Image src="/aboutbook.jpeg" alt="نبذة عن الكتاب" className="object-cover" />
-              </div>
+          <div className="grid lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
+
+            {/* ── Both books at natural size ── */}
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-start">
               {/* Front cover */}
-              <div className="relative w-52 h-72 rounded-xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)] rotate-[3deg] flex-shrink-0 border-2 border-white/20 z-10">
-                <Image src="/bookCover.jpeg" alt="غلاف الكتاب" className="object-cover" />
-                {/* Shine effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/15 via-transparent to-transparent pointer-events-none" />
+              <div className="relative flex-1 max-w-xs w-full">
+                <div className="absolute inset-0 scale-95 translate-y-4 bg-[#028FC5]/30 blur-3xl rounded-3xl pointer-events-none" />
+                <div className="relative rounded-2xl overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.6)] border border-white/10">
+                  <Image
+                    src="/bookCover.jpeg"
+                    alt="غلاف الكتاب"
+                    width={600}
+                    height={850}
+                    className="w-full h-auto"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none" />
+                </div>
+         
+              </div>
+
+              {/* About book */}
+              <div className="relative flex-1 max-w-xs w-full">
+                <div className="absolute inset-0 scale-95 translate-y-4 bg-[#F38025]/20 blur-3xl rounded-3xl pointer-events-none" />
+                <div className="relative rounded-2xl overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.6)] border border-white/10">
+                  <Image
+                    src="/aboutbook.jpeg"
+                    alt="نبذة عن الكتاب"
+                    width={600}
+                    height={850}
+                    className="w-full h-auto"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none" />
+                </div>
+             
               </div>
             </div>
 
-            {/* Text content */}
-            <div className="text-white space-y-6">
-              <h2 className="text-3xl md:text-4xl font-extrabold leading-snug text-white">
+            {/* ── Text content ── */}
+            <div className="text-white space-y-6 lg:pt-4">
+              <h2 className="text-3xl md:text-4xl font-extrabold leading-snug text-white ">
                 كتاب جديد في طريقه إليكم
                 <span className="block w-20 h-1 bg-secondary mt-3 rounded-full" />
               </h2>
 
               <div className="space-y-4 text-blue-100 text-lg leading-relaxed">
-                <p>
-                  إلى كل مريض يعاني من الشخير وانقطاع التنفس الانسدادي أثناء النوم،
-                </p>
-                <p>
-                  إلى كل من يخوض صراعًا صامتًا مع أنفاسه في عتمة الليل…
-                </p>
+                <p>إلى كل مريض يعاني من الشخير وانقطاع التنفس الانسدادي أثناء النوم،</p>
+                <p>إلى كل من يخوض صراعًا صامتًا مع أنفاسه في عتمة الليل…</p>
                 <p className="font-semibold text-white">هذا العمل كُتب من أجلكم.</p>
 
-                <div className="border-r-2 border-secondary pr-4 space-y-2 text-blue-200">
+                <div className="border-r-2 border-secondary pr-4 space-y-1 text-blue-200">
                   <p>ليكون خطوة نحو فهمٍ أعمق،</p>
                   <p>وأملٍ أقرب،</p>
                   <p>وحياةٍ أكثر طمأنينة.</p>
                 </div>
 
                 <p>
-                  لأن هذه الحالة ليست قدرًا محتومًا،
-                  بل نتيجة عوامل يمكن فهمها، والوقاية منها، وعلاجها.
+                  لأن هذه الحالة ليست قدرًا محتومًا، بل نتيجة عوامل يمكن فهمها،
+                  والوقاية منها، وعلاجها.
                 </p>
                 <p>
-                  ولأن دور طبيب الأسنان لا يتوقف عند حدود الفم،
-                  بل يمتد ليكون جزءًا أساسيًا في حماية صحة الإنسان ككل…
+                  ولأن دور طبيب الأسنان لا يتوقف عند حدود الفم، بل يمتد ليكون
+                  جزءًا أساسيًا في حماية صحة الإنسان ككل…
                 </p>
 
                 <div className="border-r-2 border-secondary/60 pr-4 space-y-1 text-blue-200 italic">
@@ -688,10 +700,11 @@ export default function ArabicSnoringClinic() {
               <a
                 href="https://wa.me/962797377131?text=أريد الاطلاع على الكتاب الجديد"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <Button className="mt-2 bg-secondary hover:bg-secondary/90 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-all duration-300">
                   <MessageCircle className="w-5 h-5 ml-2" />
-                الاستفسار حول الكتاب
+                  الاستفسار حول الكتاب
                 </Button>
               </a>
             </div>
@@ -827,36 +840,52 @@ export default function ArabicSnoringClinic() {
               فريق العمل
               <span className="block w-16 h-1 bg-secondary mx-auto mt-2 rounded-full"></span>
             </h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {teamMembers.map((doctor, idx) => (
-                <Link key={idx} href={`/team/${doctor.slug}`} className="block h-full">
-                  <Card className="h-full bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer">
-                    <CardContent className="h-full p-6 text-center flex flex-col">
-                      <div className="w-48 h-60 mx-auto mb-4 rounded-xl overflow-hidden relative">
-                        <Image
-                          src={doctor.image}
-                          alt={doctor.name}
-                          fill
-                          quality={85}
-                          sizes="(max-width: 768px) 50vw, 25vw"
-                          className="object-cover"
-                        />
+                <Link key={idx} href={`/team/${doctor.slug}`} className="group block">
+                  <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#028FC5]/30">
+                    {/* Photo */}
+                    <div className="relative h-[560px] overflow-hidden">
+                      <Image
+                        src={doctor.image}
+                        alt={doctor.name}
+                        fill
+                        quality={85}
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                      {/* Name on photo */}
+                      <div className="absolute bottom-0 right-0 left-0 px-5 pb-4">
+                        <h4 className="text-white text-xl font-bold leading-tight drop-shadow">
+                          {doctor.name}
+                        </h4>
                       </div>
-                      <h4 className="text-lg font-bold text-primary mb-2">
-                        {doctor.name}
-                      </h4>
-                      <div className="text-gray-600 leading-relaxed text-base mt-auto">
-                        {doctor.role.split("\n").map((line, index) => (
+                    </div>
+
+                    {/* Role */}
+                    <div className="px-5 py-4 flex items-center justify-between">
+                      <div>
+                        {doctor.role.split("\n").map((line, i) => (
                           <p
-                            key={index}
-                            className={index === 0 ? "font-semibold" : ""}
+                            key={i}
+                            className={
+                              i === 0
+                                ? "text-[#028FC5] text-sm font-semibold"
+                                : "text-gray-500 text-xs mt-0.5"
+                            }
                           >
                             {line}
                           </p>
                         ))}
                       </div>
-                    </CardContent>
-                  </Card>
+                      <span className="w-8 h-8 rounded-full bg-[#028FC5]/10 flex items-center justify-center shrink-0 group-hover:bg-[#028FC5] transition-colors duration-300">
+                        <svg className="w-4 h-4 text-[#028FC5] group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
                 </Link>
               ))}
             </div>

@@ -34,7 +34,7 @@ export default function SleepChallengePage() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-l from-purple-50 to-pink-100 py-12  mt-12">
+      <section className="relative bg-gradient-to-l from-purple-50 to-pink-100 py-12 mt-16">
         <div className="container mx-auto px-4">
           <Breadcrumb items={[{ label: "تحدي النوم لمدة 14 يوم" }]} />
           <div className="grid lg:grid-cols-2 gap-12 items-center">

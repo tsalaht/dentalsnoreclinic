@@ -2,7 +2,7 @@ import Image from "@/components/Image";
 
 export default function MohannadPage() {
   return (
-    <div className="container mx-auto py-12  mt-12 px-4">
+    <div className="container mx-auto py-12 mt-16 px-4">
       <div className="max-w-xl mx-auto bg-white rounded-2xl shadow-lg p-8 text-center">
         <Image
           src="/73.jpg"

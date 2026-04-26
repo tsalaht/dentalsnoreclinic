@@ -30,7 +30,7 @@ export default function ChildrenPage() {
     <div className="min-h-screen bg-white" dir="rtl">
       {/* Navigation */}
       <Navbar />      {/* Hero Section */}
-      <section className="relative bg-gradient-to-l from-green-50 to-emerald-100 py-12 overflow-hidden">
+      <section className="relative bg-gradient-to-l from-green-50 to-emerald-100 py-12 mt-16 overflow-hidden">
         {/* Enhanced floating elements */}
         <div className="absolute inset-0">
           <div className="absolute top-10 right-10 w-80 h-80 bg-gradient-to-br from-green-200/30 to-emerald-200/30 rounded-full blur-3xl animate-float morphing-shape"></div>
