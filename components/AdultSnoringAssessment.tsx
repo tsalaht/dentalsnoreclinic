@@ -25,9 +25,6 @@ export default function AdultSnoringAssessment() {
   const [showResults, setShowResults] = useState(false)
   const [showSaveForm, setShowSaveForm] = useState(false)
   const [userInfo, setUserInfo] = useState<UserInfo>({ name: '', email: '', phone: '' })
-  const[testtype ,setTesttype]=useState('')
-  const [isSaving, setIsSaving] = useState(false)
-  const [saveSuccess, setSaveSuccess] = useState(false)
 
   const questions: Question[] = [
     {
@@ -107,44 +104,34 @@ export default function AdultSnoringAssessment() {
     }
   }
 
-  const saveResult = async () => {
+  const saveResult = () => {
     if (!userInfo.name || !userInfo.email || !userInfo.phone) {
       alert("يرجى ملء جميع الحقول المطلوبة")
       return
     }
 
-    setIsSaving(true)
-    try {
-      const score = getTotalScore()
-      const results = getResultsData()
-      
-      const response = await fetch('https://backend.dentalsnoreclinic.com:3040/api/questiontest', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          result: score,
-          note: `${results.title} - ${results.recommendations.join(', ')}`,
-          email: userInfo.email,
-          name: userInfo.name,
-          phone: userInfo.phone,
-          testtype :testtype
-        })
-      })
-      
-      if (response.ok) {
-        setSaveSuccess(true)
-        setShowSaveForm(false)
-      } else {
-        throw new Error('Failed to save')
-      }
-    } catch (error) {
-      console.error("Save error:", error)
-      alert("حدث خطأ في حفظ النتائج، يرجى المحاولة مرة أخرى")
-    } finally {
-      setIsSaving(false)
-    }
+    const score = getTotalScore()
+    const results = getResultsData()
+
+    const message = [
+      "🦷 *نتيجة اختبار الشخير - Dental Snore Clinic*",
+      "",
+      `👤 *الاسم:* ${userInfo.name}`,
+      `📞 *الهاتف:* ${userInfo.phone}`,
+      `📧 *البريد الإلكتروني:* ${userInfo.email}`,
+      "",
+      `📊 *نتيجة الاختبار:* ${score}/8 نقطة`,
+      `⚠️ *مستوى الخطر:* ${results.level}`,
+      `🏷️ *التشخيص:* ${results.title}`,
+      `⏰ *الإجراء المطلوب:* ${results.urgency}`,
+      "",
+      `📝 *التوصيات:*`,
+      ...results.recommendations.map((r) => `• ${r}`),
+    ].join("\n")
+
+    const url = `https://wa.me/962797377131?text=${encodeURIComponent(message)}`
+    window.open(url, "_blank")
+    setShowSaveForm(false)
   }
 
   const getTotalScore = () => {
@@ -208,7 +195,6 @@ export default function AdultSnoringAssessment() {
     setAnswers({})
     setShowResults(false)
     setShowSaveForm(false)
-    setSaveSuccess(false)
     setUserInfo({ name: '', email: '', phone: '' })
   }
 
@@ -277,10 +263,11 @@ export default function AdultSnoringAssessment() {
             <div className="flex gap-3 mt-6">
               <Button
                 onClick={saveResult}
-                disabled={isSaving || !userInfo.name || !userInfo.email || !userInfo.phone}
-                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
+                disabled={!userInfo.name || !userInfo.email || !userInfo.phone}
+                className="flex-1 bg-green-600 hover:bg-green-700 text-white"
               >
-                {isSaving ? 'جاري الحفظ...' : 'حفظ النتائج'}
+                <MessageCircle className="w-4 h-4 ml-2" />
+                إرسال عبر الواتساب
               </Button>
               <Button
                 variant="outline"
@@ -308,12 +295,6 @@ export default function AdultSnoringAssessment() {
           'border-red-500 bg-red-50'
         }`}>
           <CardContent className="p-8 text-center">
-            {saveSuccess && (
-              <div className="mb-4 p-3 bg-green-100 border border-green-400 text-green-700 rounded-lg">
-                ✅ تم حفظ النتائج بنجاح!
-              </div>
-            )}
-
             <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 ${
               results.color === 'green' ? 'bg-green-500' :
               results.color === 'yellow' ? 'bg-yellow-500' :
@@ -379,16 +360,14 @@ export default function AdultSnoringAssessment() {
                 </Button>
               </a>
               
-              {!saveSuccess && (
-                <Button 
-                  variant="outline" 
-                  onClick={() => setShowSaveForm(true)}
-                  className="border-blue-500 text-blue-600 hover:bg-blue-50"
-                >
-                  <Save className="w-4 h-4 ml-2" />
-                  حفظ النتائج
-                </Button>
-              )}
+              <Button
+                variant="outline"
+                onClick={() => setShowSaveForm(true)}
+                className="border-blue-500 text-blue-600 hover:bg-blue-50"
+              >
+                <Save className="w-4 h-4 ml-2" />
+                إرسال النتائج
+              </Button>
               
               <Button variant="outline" onClick={restartAssessment}>
                 إعادة الاختبار
