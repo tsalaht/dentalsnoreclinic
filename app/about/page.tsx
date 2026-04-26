@@ -346,7 +346,7 @@ export default function AboutPage() {
               فريق العمل
               <span className="block w-16 h-1 bg-secondary mx-auto mt-2 rounded-full"></span>
             </h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 {
                   name: "د. مهند الكسواني",
