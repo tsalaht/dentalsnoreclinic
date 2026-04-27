@@ -7,6 +7,8 @@ export default function MohannadPage() {
         <Image
           src="/73.jpg"
           alt="د. مهند الكسواني"
+          width={400}
+          height={500}
           className="w-48 h-auto mx-auto mb-4 rounded-xl"
         />
         <h1 className="text-2xl font-bold mb-2">د. مهند الكسواني</h1>

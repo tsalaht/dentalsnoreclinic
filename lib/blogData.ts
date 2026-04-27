@@ -162,7 +162,7 @@ export const blogPosts: BlogPost[] = [
       "الرغبة الملحّة في تحريك الساقين أثناء الراحة تُعيق النوم وتتصاعد مع التقدم في العمر. يشمل التشخيص دراسات النوم وفحوص الدم، والعلاج يبدأ بإزالة المسبب كنقص الحديد أو الكافيين.",
     category: "اضطرابات النوم",
     image:
-      "https://images.unsplash.com/photo-1631217872822-8b8a6ccfb541?w=800&h=500&fit=crop",
+      "https://images.unsplash.com/photo-1586618036965-00415b4d97df?w=800&h=500&fit=crop",
     date: "٢٥ فبراير ٢٠٢٥",
     pdfPath: "/blogs/restless-legs-syndrome.pdf",
   },

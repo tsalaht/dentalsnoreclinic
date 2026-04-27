@@ -25,9 +25,10 @@ import PageLayout from "@/components/PageLayout";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import SimpleRating from "@/components/SimpleRating";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
+import { Pagination, Autoplay, EffectCoverflow } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/effect-coverflow";
 import { useState ,useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Head from "next/head";
@@ -709,6 +710,110 @@ export default function ArabicSnoringClinic() {
               </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Mobile App Section */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-teal-50 overflow-hidden" dir="rtl">
+        <div className="container mx-auto px-6 lg:px-12">
+
+          {/* ── Top: text content centered ── */}
+          <div className="text-center max-w-2xl mx-auto mb-14 space-y-4">
+            <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 text-primary text-sm font-semibold px-5 py-2 rounded-full">
+              <span className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
+              متاح الآن على App Store
+            </div>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-primary leading-tight">
+              تطبيق Dental Snore Clinic
+              <span className="block w-20 h-1 bg-secondary mx-auto mt-3 rounded-full" />
+            </h2>
+            <p className="text-gray-600 text-lg leading-relaxed">
+              تجربة طبية متكاملة في راحة يدك — تابع نومك، احجز مواعيدك، وتواصل مع فريقنا الطبي في أي وقت
+            </p>
+
+            {/* Feature pills */}
+            <div className="flex flex-wrap justify-center gap-3 pt-2">
+              {["🌙 تتبع النوم", "📅 حجز سريع", "📚 مكتبة طبية", "🎯 اختبار تفاعلي"].map((f) => (
+                <span key={f} className="bg-white border border-primary/15 text-gray-700 text-sm font-medium px-4 py-2 rounded-full shadow-sm">
+                  {f}
+                </span>
+              ))}
+            </div>
+
+            {/* App Store button */}
+            <div className="flex justify-center pt-2 mb-3">
+              <a
+                href="https://apps.apple.com/app/dental-snore-app/id6749490944"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-black hover:bg-gray-900 text-white font-semibold py-3 px-8 rounded-2xl shadow-lg transition-all duration-300 hover:scale-105"
+              >
+                <svg className="w-7 h-7 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                </svg>
+                <div className="text-right">
+                  <div className="text-xs opacity-70 leading-none mb-0.5">حمّل من</div>
+                  <div className="text-base font-bold leading-none">App Store</div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          {/* ── Bottom: Coverflow Swiper ── */}
+          <div className="relative mt-4">
+            <Swiper
+              effect="coverflow"
+              modules={[Pagination, Autoplay, EffectCoverflow]}
+              coverflowEffect={{ rotate: 20, stretch: 0, depth: 180, modifier: 1, slideShadows: false }}
+              pagination={{ clickable: true }}
+              autoplay={{ delay: 2800, disableOnInteraction: false }}
+              loop
+              centeredSlides
+              slidesPerView={1.2}
+              spaceBetween={0}
+              breakpoints={{
+                480:  { slidesPerView: 1.6 },
+                768:  { slidesPerView: 2.8 },
+                1024: { slidesPerView: 4 },
+                1280: { slidesPerView: 5 },
+              }}
+              className="pb-14"
+            >
+              {["/1.png", "/2.png", "/3.png", "/4.png", "/6.png"].map((src, i) => (
+                <SwiperSlide key={i} className="flex justify-center py-6">
+                  {/* Phone frame */}
+                  <div className="relative mx-auto w-[175px] md:w-[160px] lg:w-[140px]">
+                    {/* side buttons */}
+                    <div className="absolute top-14 -right-[5px] w-[5px] h-10 bg-gray-700 rounded-r-sm" />
+                    <div className="absolute top-28 -left-[5px] w-[5px] h-7 bg-gray-700 rounded-l-sm" />
+                    <div className="absolute top-[148px] -left-[5px] w-[5px] h-7 bg-gray-700 rounded-l-sm" />
+
+                    {/* phone body */}
+                    <div className="relative rounded-[2.8rem] overflow-hidden border-[7px] border-gray-800 shadow-[0_24px_60px_rgba(0,0,0,0.28),0_0_0_1px_rgba(0,0,0,0.06)] bg-black">
+                      {/* dynamic island / notch */}
+                      <div className="absolute top-2 left-1/2 -translate-x-1/2 w-20 h-4 bg-black rounded-full z-20" />
+                      {/* screenshot */}
+                      <Image
+                        src={src}
+                        alt={`شاشة التطبيق ${i + 1}`}
+                        width={180}
+                        height={406}
+                        className="w-full h-auto block"
+                      />
+                      {/* home indicator */}
+                      <div className="absolute bottom-2 inset-x-0 flex justify-center z-20">
+                        <div className="w-20 h-[5px] bg-gray-300 rounded-full opacity-80" />
+                      </div>
+                      {/* subtle inner glow on left edge */}
+                      <div className="absolute inset-0 pointer-events-none rounded-[2rem]"
+                        style={{ boxShadow: "inset 2px 0 6px rgba(255,255,255,0.07)" }} />
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+
         </div>
       </section>
 
