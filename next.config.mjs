@@ -8,11 +8,12 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
+     unoptimized: true,
     remotePatterns: [
       { protocol: 'https', hostname: 'backend.dentalsnoreclinic.com' },
       { protocol: 'http', hostname: 'localhost' },
       { protocol: 'https', hostname: 'images.unsplash.com' },
-       { unoptimized: true,},
+
     ],
   },
   async headers() {
