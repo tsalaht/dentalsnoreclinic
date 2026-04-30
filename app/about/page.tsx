@@ -265,8 +265,8 @@ export default function AboutPage() {
                 className="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center hover:scale-105 transition-transform duration-300 border border-blue-100 cursor-pointer"
                 onClick={() => openModal(cert.src)}
               >
-                <div className="relative w-full h-48 mb-3 rounded-lg overflow-hidden">
-                  <Image src={cert.src} alt={cert.label} className="object-cover" />
+                <div className="relative w-full h-40 mb-3 rounded-lg overflow-hidden bg-gray-50 p-2">
+                  <Image src={cert.src} alt={cert.label} style={{ objectFit: "contain" }} />
                 </div>
                 <span className="text-primary font-semibold text-sm text-center">{cert.label}</span>
               </div>
@@ -289,8 +289,8 @@ export default function AboutPage() {
             >
               &times;
             </button>
-            <div className="relative w-full h-[80vh] rounded-lg overflow-hidden">
-              <Image src={selectedImage!} alt="Certificate Full View" className="object-contain" />
+            <div className="relative w-full h-[80vh] rounded-lg overflow-hidden bg-gray-50">
+              <Image src={selectedImage!} alt="Certificate Full View" style={{ objectFit: "contain" }} />
             </div>
           </div>
         </div>

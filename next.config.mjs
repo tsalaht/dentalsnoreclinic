@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -11,6 +12,7 @@ const nextConfig = {
       { protocol: 'https', hostname: 'backend.dentalsnoreclinic.com' },
       { protocol: 'http', hostname: 'localhost' },
       { protocol: 'https', hostname: 'images.unsplash.com' },
+       { unoptimized: true,},
     ],
   },
   async headers() {
