@@ -831,21 +831,20 @@ html {
 }
 
 .swiper-pagination {
-  bottom: 24px !important;
+  bottom: 16px !important ;
   width: 150px !important;
   background-color: #028ec56c !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
   position: absolute !important;
   text-align: center !important;
-  border-radius: 9999px; /* optional: make it pill-shaped */
-  padding: 6px 0;        /* optional: some vertical padding */
+
 }
 
 .swiper-pagination-bullet {
   background: #ffffff !important;
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   margin: 0 6px !important;
   transition: all 0.3s;

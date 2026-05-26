@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(pdftotext \"أفضل الطرق لحل مشكلة الشخير.pdf\" -)"
+      "Bash(pdftotext \"أفضل الطرق لحل مشكلة الشخير.pdf\" -)",
+      "PowerShell(ls \"d:\\\\workspace\\\\krybton projects\\\\dentalsnoreclinic-web\\\\public\\\\blogs\" | Where-Object { $_.LastWriteTime -gt \\(Get-Date\\).AddMinutes\\(-5\\) } | Select-Object Name)"
     ]
   }
 }
